@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('Give me a hint, I will let you in!') !== ''){
+                alert('Are you kidding me?');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+  <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.min.css" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=">
+
+
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg?v=" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="工作记录," />
+
+
+<meta name="description" content="Tomcat 容器启动问题 前提 Spring Boot 版本 2.0.3.RELEASE druid-spring-boot-starter 版本 1.1.9 mysql-connector-java 版本 5.1.46 MySQL 数据库版本 5.7 Tomcat 版本 7.0.67（最终升级了版本到 Tomcat 8） JDK 版本 1.7（最终升级到1.8）    问题： 测试、生产配置文">
+<meta name="keywords" content="工作记录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大版本更新上线问题汇总">
+<meta property="og:url" content="https://tryme.wang/2019/01/new-version-problems/index.html">
+<meta property="og:site_name" content="Star Wang">
+<meta property="og:description" content="Tomcat 容器启动问题 前提 Spring Boot 版本 2.0.3.RELEASE druid-spring-boot-starter 版本 1.1.9 mysql-connector-java 版本 5.1.46 MySQL 数据库版本 5.7 Tomcat 版本 7.0.67（最终升级了版本到 Tomcat 8） JDK 版本 1.7（最终升级到1.8）    问题： 测试、生产配置文">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/007jb4T5ly1fyfu2m6sjbj315w0vmgou.jpg">
+<meta property="og:updated_time" content="2019-01-04T01:47:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="大版本更新上线问题汇总">
+<meta name="twitter:description" content="Tomcat 容器启动问题 前提 Spring Boot 版本 2.0.3.RELEASE druid-spring-boot-starter 版本 1.1.9 mysql-connector-java 版本 5.1.46 MySQL 数据库版本 5.7 Tomcat 版本 7.0.67（最终升级了版本到 Tomcat 8） JDK 版本 1.7（最终升级到1.8）    问题： 测试、生产配置文">
+<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/007jb4T5ly1fyfu2m6sjbj315w0vmgou.jpg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Star Wang" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="https://tryme.wang/2019/01/new-version-problems/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>大版本更新上线问题汇总 | Star Wang</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/trymesoft"><img style="position: absolute; top: 0; right: 0; border: 0;"
+     src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Star Wang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">To see the new world!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-music">
+          <a href="/categories/Music" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-music"></i> <br />音乐</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tryme.wang/2019/01/new-version-problems/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Star Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/astronaut.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Star Wang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">大版本更新上线问题汇总</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-04T01:15:40+08:00">2019-01-04</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-04T09:47:32+08:00">2019-01-04</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/new-version-problems/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/01/new-version-problems/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/01/new-version-problems/" class="leancloud_visitors" data-flag-title="大版本更新上线问题汇总">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">13k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">0:07</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Tomcat-容器启动问题"><a href="#Tomcat-容器启动问题" class="headerlink" title="Tomcat 容器启动问题"></a>Tomcat 容器启动问题</h3><blockquote>
+<h4 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h4><ol>
+<li>Spring Boot 版本 2.0.3.RELEASE</li>
+<li>druid-spring-boot-starter 版本 1.1.9</li>
+<li>mysql-connector-java 版本 5.1.46</li>
+<li>MySQL 数据库版本 5.7</li>
+<li>Tomcat 版本 7.0.67（最终升级了版本到 Tomcat 8）</li>
+<li>JDK 版本 1.7（最终升级到1.8）</li>
+</ol>
+</blockquote>
+<hr>
+<p><strong>问题：</strong> 测试、生产配置文件属性不同步，生产环境很多属性未配置，导致错误注入。<br><strong>解决：</strong> 将所有注入的 API 地址同步。</p>
+<hr>
+<p><strong>问题：</strong> 启动时 Dubbo 报错，找不到服务。</p>
+<p><strong>解决：</strong> 提供者所在机器 Dubbo 端口未开放，开放对应端口即可。</p>
+<hr>
+<p><strong>问题：</strong> Tomcat 无法启动，每次启动报不同的错误。</p>
+<p><strong>解决：</strong> JDK版本升级到 1.8→Tomcat 版本升级到 7.0.92</p>
+<hr>
+<p><strong>问题：</strong> java.lang.NoClassDefFoundError: javax/el/ELManager</p>
+<p><strong>解决：</strong><a href="https://tryme.wang/archives/201811/springboot-war-problem.html">参考</a></p>
+<hr>
+<p><strong>问题：</strong></p>
+<p>配置：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># MySQL数据源配置</span></span><br><span class="line"><span class="attr">  datasource:</span></span><br><span class="line"><span class="attr">    driver-class-name:</span> <span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="attr">    druid:</span></span><br><span class="line"><span class="attr">      url:</span> <span class="string">jdbc\:mysql\://rds.xxx.com\:3306/xxx?useUnicode\=true&amp;characterEncoding\=UTF-8&amp;zeroDateTimeBehavior\=convertToNull</span></span><br><span class="line"><span class="attr">      username:</span> <span class="string">xxx</span></span><br><span class="line"><span class="attr">      password:</span> <span class="string">password</span></span><br></pre></td></tr></table></figure>
+<p>异常信息：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Caused by: java.sql.SQLException: connect error, url jdbc\:mysql\:<span class="comment">//rds.xxx.com\:3306/xxx?useUnicode\=true&amp;characterEncoding\=UTF-8&amp;zeroDateTimeBehavior\=convertToNull, driverClass com.mysql.jdbc.Driver</span></span><br><span class="line">	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:<span class="number">1582</span>)</span><br><span class="line">	at com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:<span class="number">859</span>)</span><br><span class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</span><br><span class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:<span class="number">62</span>)</span><br><span class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:<span class="number">43</span>)</span><br><span class="line">	at java.lang.reflect.Method.invoke(Method.java:<span class="number">498</span>)</span><br><span class="line">	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeCustomInitMethod(AbstractAutowireCapableBeanFactory.java:<span class="number">1833</span>)</span><br><span class="line">	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:<span class="number">1776</span>)</span><br><span class="line">	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:<span class="number">1704</span>)</span><br><span class="line">	... <span class="number">116</span> more</span><br></pre></td></tr></table></figure>
+<p><strong>解决：</strong> 异常信息里非常明确的提及是数据库连接 url 的问题，在 Spring Boot  的 yml 配置文件中，格式为：<code>property: value</code> 属性名称加「:」之后有一个空格，项目之前的配置文件中 MySQL 数据库的连接地址转义过，这里直接复制过来使用，是行不通的，将转义字符「\」去掉即可。</p>
+<hr>
+<h3 id="Tomcat-重启之后异常"><a href="#Tomcat-重启之后异常" class="headerlink" title="Tomcat 重启之后异常"></a>Tomcat 重启之后异常</h3><p><strong>问题：</strong></p>
+<p>异常信息：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">org.apache.catalina.session.StandardManager doLoad</span><br><span class="line">SEVERE: IOException <span class="keyword">while</span> loading persisted sessions: java.io.EOFException</span><br><span class="line">java.io.EOFException</span><br><span class="line">    at java.io.ObjectInputStream$PeekInputStream.readFully(ObjectInputStream.java:<span class="number">2298</span>)</span><br><span class="line">    at java.io.ObjectInputStream$BlockDataInputStream.readShort(ObjectInputStream.java:<span class="number">2767</span>)</span><br><span class="line">    at java.io.ObjectInputStream.readStreamHeader(ObjectInputStream.java:<span class="number">798</span>)</span><br><span class="line">    at java.io.ObjectInputStream.&lt;init&gt;(ObjectInputStream.java:<span class="number">298</span>)</span><br><span class="line">   ...</span><br><span class="line"></span><br><span class="line">org.apache.catalina.session.StandardManager startInternal</span><br><span class="line">SEVERE: Exception loading sessions from persistent storage</span><br><span class="line">java.io.EOFException</span><br><span class="line">   ...</span><br></pre></td></tr></table></figure>
+<p><strong>解决：</strong> 删除 <code> ${catalina.home}/work/Catalina/localhost/${APP-NAME}/SESSION.ser</code> 即可</p>
+<hr>
+<p><strong>问题：</strong> Dubbo 报错</p>
+<p>报错信息：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2018</span>-<span class="number">12</span>-<span class="number">15</span> <span class="number">20</span>:<span class="number">26</span>:<span class="number">52</span>,<span class="number">387</span> [DubboSaveRegistryCache-thread-<span class="number">1</span>] WARN  [com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry] -  [DUBBO] Failed to save registry store file, cause: Can not lock the registry cache file /root/.dubbo/dubbo-registry-<span class="number">10.11</span>.12.13.cache, ignore and retry later, maybe multi java process use the file, please config: dubbo.registry.file=xxx.properties, dubbo version: <span class="number">2.5</span>.3, current host: <span class="number">10.20</span>.30.40</span><br><span class="line">java.io.IOException: Can not lock the registry cache file /root/.dubbo/dubbo-registry-<span class="number">10.11</span>.12.13.cache, ignore and retry later, maybe multi java process use the file, please config: dubbo.registry.file=xxx.properties</span><br><span class="line">        at com.alibaba.dubbo.registry.support.AbstractRegistry.doSaveProperties(AbstractRegistry.java:<span class="number">193</span>)</span><br><span class="line">        at com.alibaba.dubbo.registry.support.AbstractRegistry$SaveProperties.run(AbstractRegistry.java:<span class="number">150</span>)</span><br><span class="line">        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:<span class="number">1145</span>)</span><br><span class="line">        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:<span class="number">615</span>)</span><br><span class="line">        at java.lang.Thread.run(Thread.java:<span class="number">745</span>)</span><br></pre></td></tr></table></figure>
+<p>Dubbo 会使用文件缓存注册中心地址列表及服务提供者列表，默认路径在 <code>/${user.home}/.dubbo/dubbo-registry-10.20.30.40.cache</code>，应用重启时将基于此文件恢复，一台服务器有多个应用使用这个文件恢复时，会出现这个警告。</p>
+<p><strong>解决：</strong> 可以在每个项目 Dubbo 配置文件中的 <code><a href="dubbo:registry" target="_blank" rel="noopener">dubbo:registry</a></code> 标签中的 file 指定不同的文件路径。 <a href="http://dubbo.apache.org/zh-cn/docs/user/references/xml/dubbo-registry.html" target="_blank" rel="noopener">官方文档</a> <a href="https://github.com/apache/incubator-dubbo/issues/81" target="_blank" rel="noopener">参考地址</a></p>
+<hr>
+<p><strong>问题：</strong> Tomcat 容器无日志输出<br>logback-spring.xml配置：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="comment">&lt;!-- 测试环境+开发环境. --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">springProfile</span> <span class="attr">name</span>=<span class="string">"test,dev"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">logger</span> <span class="attr">name</span>=<span class="string">"com.xxx.im"</span> <span class="attr">level</span>=<span class="string">"INFO"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">springProfile</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 生产环境 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">springProfile</span> <span class="attr">name</span>=<span class="string">"prod"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">logger</span> <span class="attr">name</span>=<span class="string">"com.xxx.im"</span> <span class="attr">level</span>=<span class="string">"ERROR"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">springProfile</span>&gt;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p><strong>解决：</strong> 生产环境日志输出级别过高，<code>INFO</code> 级别的无法输出，将  <code>ERROR</code> 改为 <code>INFO</code> 即可。</p>
+<hr>
+<blockquote>
+<p>转战华为云之后🙂</p>
+</blockquote>
+<h3 id="RabbitMQ-连接"><a href="#RabbitMQ-连接" class="headerlink" title="RabbitMQ 连接"></a>RabbitMQ 连接</h3><blockquote>
+<p>Spring Boot 版本 <code>2.0.3.RELEASE</code></p>
+</blockquote>
+<p><strong>问题：</strong> RabbitMQ 直接使用 yaml 配置如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">	<span class="attr">rabbitmq:</span></span><br><span class="line"><span class="attr">    host:</span> <span class="string">rabbitmq.xxx.com</span></span><br><span class="line"><span class="attr">    username:</span> <span class="string">user</span></span><br><span class="line"><span class="attr">    password:</span> <span class="string">password123456</span></span><br><span class="line"><span class="attr">    port:</span> <span class="number">5672</span></span><br></pre></td></tr></table></figure>
+<p> 项目启动时报错信息：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">    ...ForgivingExceptionHandler - <span class="function">An unexpected connection driver error <span class="title">occured</span> <span class="params">(Exception message: Connection closed)</span></span></span><br><span class="line"><span class="function">...</span></span><br></pre></td></tr></table></figure>
+<p><strong>解决：</strong> 从异常日志中可以很明显的看到，是 <code>Connection closed</code>，解决思路如下：</p>
+<ol>
+<li><p>初步判断当前机器无法连通 RabbitMQ 所在机器，使用  <code>ping rabbitmq.xxx.com</code> 命令可以 ping 通 RabbitMQ 所在机器，并且  <code>telnet rabbitmq.xxx.com 5672</code> 也是可以连通的，排除此原因；</p>
+</li>
+<li><p>确认 <code>username、password</code> 准确性，发现 RabbitMQ 是新装的，使用命令查看其用户：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@rabbit ~]<span class="comment"># rabbitmqctl list_users</span></span><br><span class="line">Listing users ...</span><br><span class="line">admin   [administrator]</span><br></pre></td></tr></table></figure>
+<p>发现并没有 <code>user</code> 这个用户，创建用户：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@rabbit ~]<span class="comment"># rabbitmqctl add_user user password123456</span></span><br><span class="line">Creating user <span class="string">"user"</span> ...</span><br></pre></td></tr></table></figure>
+<p>设置为管理员：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@rabbit ~]<span class="comment"># rabbitmqctl set_user_tags user administrator</span></span><br><span class="line">Setting tags <span class="keyword">for</span> user <span class="string">"user"</span> to [administrator] ...</span><br></pre></td></tr></table></figure>
+<p>此时，使用该用户登录 RabbitMQ WEB 端管理页面后查看该用户信息：<br><img src="https://ws3.sinaimg.cn/large/007jb4T5ly1fyfu2m6sjbj315w0vmgou.jpg" alt="image" align="center"><br>点击 <code>Set permission</code> 配置权限，重启项目后问题解决。</p>
+</li>
+</ol>
+<hr>
+<h3 id="Tomcat-问题"><a href="#Tomcat-问题" class="headerlink" title="Tomcat 问题"></a>Tomcat 问题</h3><p><strong>问题：</strong> 启动 Tomcat 容器报错信息如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">org.apache.tomcat.jni.Error: <span class="number">70023</span>: This function has not been implemented on <span class="keyword">this</span> platform</span><br><span class="line">        at org.apache.tomcat.jni.SSL.initialize(Native Method)</span><br><span class="line">        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</span><br></pre></td></tr></table></figure>
+<p><strong>解决：</strong> 修改 <code>$TOMCAT_HOME/conf/server.xml</code> 中的 <code>&lt;Listener className=&quot;org.apache.catalina.core.AprLifecycleListener&quot; SSLEngine=&quot;off&quot; /&gt;</code> 即可解决。</p>
+<h3 id="Tomcat-问题-1"><a href="#Tomcat-问题-1" class="headerlink" title="Tomcat 问题"></a>Tomcat 问题</h3><p><strong>问题：</strong> 启动 Tomcat 容器报错信息如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">org.apache.tomcat.jni.Error: <span class="number">70023</span>: This function has not been implemented on <span class="keyword">this</span> platform</span><br><span class="line">        at org.apache.tomcat.jni.SSL.initialize(Native Method)</span><br><span class="line">        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</span><br></pre></td></tr></table></figure>
+<p><strong>解决：</strong> 修改 <code>$TOMCAT_HOME/conf/server.xml</code> 中的 <code>&lt;Listener className=&quot;org.apache.catalina.core.AprLifecycleListener&quot; SSLEngine=&quot;off&quot; /&gt;</code> 即可解决。</p>
+<h3 id="线上问题处理"><a href="#线上问题处理" class="headerlink" title="线上问题处理"></a>线上问题处理</h3><p><strong>问题：</strong> </p>
+<blockquote>
+<p>MongoDB 版本：TokuMX 2.0.2 | MongoDB 2.4</p>
+<p>spring-data-mongodb 版本：1.4.1.RELEASE</p>
+<p>spring-data-commons 版本：1.7.2.RELEASE</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">java.lang.IllegalArgumentException: You have to provide at least one property to sort by!</span><br><span class="line">        at org.springframework.data.domain.Sort.&lt;init&gt;(Sort.java:<span class="number">91</span>)</span><br><span class="line">        at org.springframework.data.domain.Sort.&lt;init&gt;(Sort.java:<span class="number">79</span>)</span><br><span class="line">    	...</span><br><span class="line">        at sun.reflect.GeneratedMethodAccessor415.invoke(Unknown Source)</span><br><span class="line">        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:<span class="number">43</span>)</span><br><span class="line">        at java.lang.reflect.Method.invoke(Method.java:<span class="number">606</span>)</span><br><span class="line">    	...</span><br></pre></td></tr></table></figure>
+<p><strong>解决：</strong> 异常信息很明确，未提供排序的属性，检查代码，异常代码片段如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">   <span class="meta">@Autowired</span></span><br><span class="line">   <span class="keyword">private</span> MongoTemplate mongoTemplate;</span><br><span class="line">...</span><br><span class="line">   Query query = <span class="keyword">new</span> Query();</span><br><span class="line">List&lt;String&gt; sortStrList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"><span class="keyword">if</span> (...) &#123;</span><br><span class="line">   	sortStrList.add(<span class="string">"property"</span>);</span><br><span class="line">   &#125;</span><br><span class="line">query.with(<span class="keyword">new</span> Sort(Sort.Direction.DESC, sortStrList.toArray(<span class="keyword">new</span> String[sortStrList.size()])))</span><br><span class="line">   mongoTemplate.find(query, Xxx.class);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>很明显，排序属性集合 <code>sortStrList</code> 中有可能没有任何属性，再查看 <code>org.springframework.data.domain.Sort</code> 中的构造方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Sort</span><span class="params">(Sort.Direction direction, String... properties)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(direction, (List)(properties == <span class="keyword">null</span> ? <span class="keyword">new</span> ArrayList() : Arrays.asList(properties)));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Sort</span><span class="params">(Sort.Direction direction, List&lt;String&gt; properties)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (properties != <span class="keyword">null</span> &amp;&amp; !properties.isEmpty()) &#123;</span><br><span class="line">        <span class="keyword">this</span>.orders = <span class="keyword">new</span> ArrayList(properties.size());</span><br><span class="line">        Iterator i$ = properties.iterator();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(i$.hasNext()) &#123;</span><br><span class="line">            String property = (String)i$.next();</span><br><span class="line">            <span class="keyword">this</span>.orders.add(<span class="keyword">new</span> Sort.Order(direction, property));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"You have to provide at least one property to sort by!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看出，<code>sortStrList</code> 完全无需转换为数组，但这不是主要原因，从下面的构造方法中可以看出，传入的 List 集合不可为空对象并且必须集合大小必须大于 0，所以解决方案可以有多种，只需控制 <code>sortStrList</code> 集合不为空且 size 大于 0，或者根据判断查询不加排序条件也可以解决。</p>
+<hr>
+<p><strong>问题：</strong> </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">org.springframework.data.mongodb.UncategorizedMongoDbException: Lock not granted. Try restarting the transaction.; nested exception is com.mongodb.MongoExcep</span><br><span class="line">tion: Lock not granted. Try restarting the transaction.</span><br><span class="line">        at org.springframework.data.mongodb.core.MongoExceptionTranslator.translateExceptionIfPossible(MongoExceptionTranslator.java:<span class="number">83</span>)</span><br><span class="line">        at org.springframework.data.mongodb.core.MongoTemplate.potentiallyConvertRuntimeException(MongoTemplate.java:<span class="number">1828</span>)</span><br><span class="line">        at org.springframework.data.mongodb.core.MongoTemplate.execute(MongoTemplate.java:<span class="number">409</span>)</span><br><span class="line">        at org.springframework.data.mongodb.core.MongoTemplate.doUpdate(MongoTemplate.java:<span class="number">995</span>)</span><br><span class="line">        at org.springframework.data.mongodb.core.MongoTemplate.updateFirst(MongoTemplate.java:<span class="number">969</span>)</span><br><span class="line">        ...</span><br><span class="line">        at sun.reflect.GeneratedMethodAccessor378.invoke(Unknown Source)</span><br><span class="line">        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:<span class="number">43</span>)</span><br><span class="line">        at java.lang.reflect.Method.invoke(Method.java:<span class="number">606</span>)</span><br><span class="line">        at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:<span class="number">317</span>)</span><br><span class="line">        at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:<span class="number">183</span>)</span><br><span class="line">        at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:<span class="number">150</span>)</span><br><span class="line">        at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:<span class="number">80</span>)</span><br><span class="line">        ...</span><br><span class="line">        at sun.reflect.GeneratedMethodAccessor200.invoke(Unknown Source)</span><br><span class="line">        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:<span class="number">43</span>)</span><br><span class="line">        at java.lang.reflect.Method.invoke(Method.java:<span class="number">606</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>解决：</strong> 手动配置的 MongoDB 事务问题，尚未彻底解决。</p>
+<hr>
+<p><strong>问题：</strong> </p>
+<blockquote>
+<p>Spring 整合 MongoDB配置文件：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"mongoOptions"</span> <span class="attr">class</span>=<span class="string">"com.mongodb.MongoOptions"</span>&gt;</span></span><br><span class="line">&gt; 		...</span><br><span class="line">&gt; 		<span class="comment">&lt;!-- 连接超时时间(毫秒)，默认为4000 --&gt;</span></span><br><span class="line">&gt; 		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"connectTimeout"</span> <span class="attr">value</span>=<span class="string">"4000"</span> /&gt;</span></span><br><span class="line">&gt; 		<span class="comment">&lt;!-- socket读写时超时时间(毫秒)，默认为0，不超时 --&gt;</span></span><br><span class="line">&gt; 		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"socketTimeout"</span> <span class="attr">value</span>=<span class="string">"0"</span> /&gt;</span></span><br><span class="line">&gt; 		<span class="comment">&lt;!-- 是socket连接在防火墙上保持活动的特性，默认为false --&gt;</span></span><br><span class="line">&gt; 		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"socketKeepAlive"</span> <span class="attr">value</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">&gt;     	...</span><br><span class="line">&gt; <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">org.springframework.dao.DataAccessResourceFailureException: can<span class="string">'t say something; nested exception is com.mongodb.MongoException$Network: can'</span>t say something</span><br><span class="line">        at org.springframework.data.mongodb.core.MongoExceptionTranslator.translateExceptionIfPossible(MongoExceptionTranslator.java:<span class="number">56</span>)</span><br><span class="line">        at org.springframework.data.mongodb.core.MongoTemplate.potentiallyConvertRuntimeException(MongoTemplate.java:<span class="number">1828</span>)</span><br><span class="line">        at org.springframework.data.mongodb.core.MongoTemplate.execute(MongoTemplate.java:<span class="number">409</span>)</span><br><span class="line">        at org.springframework.data.mongodb.core.MongoTemplate.insertDBObject(MongoTemplate.java:<span class="number">893</span>)</span><br><span class="line">        at org.springframework.data.mongodb.core.MongoTemplate.doInsert(MongoTemplate.java:<span class="number">713</span>)</span><br><span class="line">        at org.springframework.data.mongodb.core.MongoTemplate.insert(MongoTemplate.java:<span class="number">668</span>)</span><br><span class="line">        at org.springframework.data.mongodb.core.MongoTemplate.insert(MongoTemplate.java:<span class="number">659</span>)</span><br><span class="line">        at net.okdi.o2o.core.helper.ExceptionHelper.afterThrow(ExceptionHelper.java:<span class="number">71</span>)</span><br><span class="line">        at sun.reflect.GeneratedMethodAccessor438.invoke(Unknown Source)</span><br><span class="line">        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:<span class="number">43</span>)</span><br><span class="line">        at java.lang.reflect.Method.invoke(Method.java:<span class="number">606</span>)</span><br><span class="line">        ...</span><br><span class="line">        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:<span class="number">1145</span>)</span><br><span class="line">        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:<span class="number">615</span>)</span><br><span class="line">        at java.lang.Thread.run(Thread.java:<span class="number">745</span>)</span><br><span class="line">Caused by: com.mongodb.MongoException$Network: can<span class="string">'t say something</span></span><br><span class="line"><span class="string">        at com.mongodb.DBTCPConnector.say(DBTCPConnector.java:194)</span></span><br><span class="line"><span class="string">        at com.mongodb.DBTCPConnector.say(DBTCPConnector.java:155)</span></span><br><span class="line"><span class="string">        at com.mongodb.DBApiLayer$MyCollection.insert(DBApiLayer.java:249)</span></span><br><span class="line"><span class="string">        at com.mongodb.DBApiLayer$MyCollection.insert(DBApiLayer.java:205)</span></span><br><span class="line"><span class="string">        at com.mongodb.DBCollection.insert(DBCollection.java:57)</span></span><br><span class="line"><span class="string">        at com.mongodb.DBCollection.insert(DBCollection.java:100)</span></span><br><span class="line"><span class="string">        at org.springframework.data.mongodb.core.MongoTemplate$8.doInCollection(MongoTemplate.java:898)</span></span><br><span class="line"><span class="string">        at org.springframework.data.mongodb.core.MongoTemplate.execute(MongoTemplate.java:407)</span></span><br><span class="line"><span class="string">        ... 44 more</span></span><br><span class="line"><span class="string">Caused by: java.io.IOException: couldn'</span>t connect to [mongodb.xxx.com/<span class="number">192.168</span>.1.22:<span class="number">27017</span>] bc:java.net.SocketTimeoutException: connect timed out</span><br><span class="line">        at com.mongodb.DBPort._open(DBPort.java:<span class="number">214</span>)</span><br><span class="line">        at com.mongodb.DBPort.go(DBPort.java:<span class="number">107</span>)</span><br><span class="line">        at com.mongodb.DBPort.go(DBPort.java:<span class="number">88</span>)</span><br><span class="line">        at com.mongodb.DBPort.findOne(DBPort.java:<span class="number">143</span>)</span><br><span class="line">        at com.mongodb.DBPort.runCommand(DBPort.java:<span class="number">148</span>)</span><br><span class="line">        at com.mongodb.DBPort.checkAuth(DBPort.java:<span class="number">307</span>)</span><br><span class="line">        at com.mongodb.DBTCPConnector.say(DBTCPConnector.java:<span class="number">180</span>)</span><br><span class="line">        ... <span class="number">51</span> more</span><br></pre></td></tr></table></figure>
+<p><strong>解决：</strong> 异常最后很明确的提示了 <code>connect timed out</code> 连接超时的问题，我们可以将 <code>connectTimeout</code> 连接超时属性适当扩大，如果是提示 <code>read timed out</code>，原因是在进行数据操作时过长时间没有返回结果，此时要修改 <code>socketTimeout</code> 属性了。</p>
+<p><a href="https://zyjustin9.iteye.com/blog/2017986" target="_blank" rel="noopener">参考文章</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <div>
+        
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------本文结束------</div>
+    
+</div>
+        
+     </div>
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Star Wang 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Star Wang 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Star Wang</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://tryme.wang/2019/01/new-version-problems/" title="大版本更新上线问题汇总">https://tryme.wang/2019/01/new-version-problems/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/工作记录/" rel="tag"><i class="fa fa-tag"></i> 工作记录</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/spring-boot-war-problems/" rel="next" title="Spring Boot war 包方式启动问题">
+                <i class="fa fa-chevron-left"></i> Spring Boot war 包方式启动问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/ethereum-web3js/" rel="prev" title="Web3.js 调用已部署智能合约的 function">
+                Web3.js 调用已部署智能合约的 function <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/astronaut.jpg"
+                alt="Star Wang" />
+            
+              <p class="site-author-name" itemprop="name">Star Wang</p>
+              <p class="site-description motion-element" itemprop="description">To be or not to be!</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">30</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/trymesoft" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:tryme.wang@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://plus.google.com/u/1/103926428608136276824" target="_blank" title="Google"><i class="fa fa-fw fa-google"></i>Google</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/DoubleDouble_X" target="_blank" title="Twitter"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tomcat-容器启动问题"><span class="nav-number">1.</span> <span class="nav-text">Tomcat 容器启动问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前提"><span class="nav-number">1.1.</span> <span class="nav-text">前提</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tomcat-重启之后异常"><span class="nav-number">2.</span> <span class="nav-text">Tomcat 重启之后异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RabbitMQ-连接"><span class="nav-number">3.</span> <span class="nav-text">RabbitMQ 连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tomcat-问题"><span class="nav-number">4.</span> <span class="nav-text">Tomcat 问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tomcat-问题-1"><span class="nav-number">5.</span> <span class="nav-text">Tomcat 问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线上问题处理"><span class="nav-number">6.</span> <span class="nav-text">线上问题处理</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-globe"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Star Wang</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数&#58;</span>
+    
+    <span title="站点总字数">100k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总阅读时长&#58;</span>
+    
+    <span title="站点总阅读时长">0:50</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v="></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v="></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v="></script>
+<script type="text/javascript" src="/js/src/post-details.js?v="></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://blog-star.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'https://tryme.wang/2019/01/new-version-problems/';
+        this.page.identifier = '2019/01/new-version-problems/';
+        this.page.title = '大版本更新上线问题汇总';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://blog-star.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("SuPMakODy8NqVJGwE3wydEiY-gzGzoHsz", "qcGHy32d1f1ChCNy0K11zE8L");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "default";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 10604,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v="></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v="></script>
+
+
+  
+
+  
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>
