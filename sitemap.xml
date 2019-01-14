@@ -4,7 +4,7 @@
   <url>
     <loc>https://tryme.wang/2019/01/mysql-upgrade-problems/</loc>
     
-    <lastmod>2019-01-14T09:03:44.599Z</lastmod>
+    <lastmod>2019-01-14T09:05:16.659Z</lastmod>
     
   </url>
   
@@ -51,7 +51,7 @@
   </url>
   
   <url>
-    <loc>https://tryme.wang/2019/01/dubbo-service-aop-conflict/</loc>
+    <loc>https://tryme.wang/2018/02/centos-jenkins-install/</loc>
     
     <lastmod>2019-01-04T01:47:32.000Z</lastmod>
     
@@ -65,13 +65,6 @@
   </url>
   
   <url>
-    <loc>https://tryme.wang/2018/02/centos-jenkins-install/</loc>
-    
-    <lastmod>2019-01-04T01:47:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://tryme.wang/2017/09/centos-mysql-install/</loc>
     
     <lastmod>2019-01-04T01:47:32.000Z</lastmod>
@@ -79,14 +72,14 @@
   </url>
   
   <url>
-    <loc>https://tryme.wang/2018/05/file-verify/</loc>
+    <loc>https://tryme.wang/2019/01/dubbo-service-aop-conflict/</loc>
     
     <lastmod>2019-01-04T01:47:32.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://tryme.wang/2017/08/idea-maven/</loc>
+    <loc>https://tryme.wang/2018/05/file-verify/</loc>
     
     <lastmod>2019-01-04T01:47:32.000Z</lastmod>
     
@@ -107,6 +100,13 @@
   </url>
   
   <url>
+    <loc>https://tryme.wang/2017/08/spring-aop-exception/</loc>
+    
+    <lastmod>2019-01-04T01:47:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://tryme.wang/2019/01/spring-boot-use-problems/</loc>
     
     <lastmod>2019-01-04T01:47:32.000Z</lastmod>
@@ -114,7 +114,7 @@
   </url>
   
   <url>
-    <loc>https://tryme.wang/2017/08/spring-aop-exception/</loc>
+    <loc>https://tryme.wang/2017/08/idea-maven/</loc>
     
     <lastmod>2019-01-04T01:47:32.000Z</lastmod>
     
@@ -156,14 +156,14 @@
   </url>
   
   <url>
-    <loc>https://tryme.wang/2018/04/wechat-userinfo/</loc>
+    <loc>https://tryme.wang/2018/05/vultr-ssr/</loc>
     
     <lastmod>2019-01-04T01:47:32.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://tryme.wang/2018/05/vultr-ssr/</loc>
+    <loc>https://tryme.wang/2018/04/wechat-userinfo/</loc>
     
     <lastmod>2019-01-04T01:47:32.000Z</lastmod>
     
@@ -205,14 +205,14 @@
   </url>
   
   <url>
-    <loc>https://tryme.wang/categories/index.html</loc>
+    <loc>https://tryme.wang/about/index.html</loc>
     
     <lastmod>2018-04-14T06:54:50.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://tryme.wang/about/index.html</loc>
+    <loc>https://tryme.wang/categories/index.html</loc>
     
     <lastmod>2018-04-14T06:54:50.000Z</lastmod>
     
