@@ -125,31 +125,21 @@
 
 
   
-  <meta name="keywords" content="Vultr," />
+  <meta name="keywords" content="以太坊,Web3.js," />
 
 
-<meta name="description" content="1. 首先官网注册账号点我注册账号  2. 充值Vultr 支持支付宝及 PayPal 和信用卡支付。   3. 选择属性 地区    选择操作系统（建议 Centos6）    选择配置    额外选项（根据需要自定义）    等待安装    4. 登录 VPS 获得 IP 及密码，登录远程 VPS    安装脚本（逗比提供）  wget -N --no-check-certificate ht">
-<meta name="keywords" content="Vultr">
+<meta name="description" content="简介与环境简介 web3.js 是以太坊提供的一个 JavaScript 库，它封装了以太坊的 JSON RPC API、IPC 调用，提供了一系列与以太坊区块链交互的对象和函数。几乎囊括 JSON RPC 的 API，还可以编译和部署智能合约以及调用智能合约等，其中最重要的就是与智能合约交互的 JS 对象及函数。   开发环境 macOS 操作系统  Node.js  8.9.4  npm 5.">
+<meta name="keywords" content="以太坊,Web3.js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="酸酸乳">
-<meta property="og:url" content="https://tryme.wang/2018/05/vultr-ssr/index.html">
+<meta property="og:title" content="Web3.js 调用已部署智能合约的 function">
+<meta property="og:url" content="https://tryme.wang/2018/03/ethereum-web3js/index.html">
 <meta property="og:site_name" content="Star Wang">
-<meta property="og:description" content="1. 首先官网注册账号点我注册账号  2. 充值Vultr 支持支付宝及 PayPal 和信用卡支付。   3. 选择属性 地区    选择操作系统（建议 Centos6）    选择配置    额外选项（根据需要自定义）    等待安装    4. 登录 VPS 获得 IP 及密码，登录远程 VPS    安装脚本（逗比提供）  wget -N --no-check-certificate ht">
+<meta property="og:description" content="简介与环境简介 web3.js 是以太坊提供的一个 JavaScript 库，它封装了以太坊的 JSON RPC API、IPC 调用，提供了一系列与以太坊区块链交互的对象和函数。几乎囊括 JSON RPC 的 API，还可以编译和部署智能合约以及调用智能合约等，其中最重要的就是与智能合约交互的 JS 对象及函数。   开发环境 macOS 操作系统  Node.js  8.9.4  npm 5.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://wx2.sinaimg.cn/large/007jb4T5ly1fxh2lftpn5j31f512gq7h.jpg">
-<meta property="og:image" content="https://wx2.sinaimg.cn/large/007jb4T5ly1fxh2ma9jp1j31p10xcjxl.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/007jb4T5ly1fxh2nd1n86j31oa0lg0w6.jpg">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/007jb4T5ly1fxh2o800xyj31pt0vj7ai.jpg">
-<meta property="og:image" content="https://wx1.sinaimg.cn/large/007jb4T5ly1fxh2oz8lj6j312m0vm0v5.jpg">
-<meta property="og:image" content="https://wx3.sinaimg.cn/large/007jb4T5ly1fxh2ps7645j31rn0jlgow.jpg">
-<meta property="og:image" content="https://wx3.sinaimg.cn/large/007jb4T5ly1fxh2qlboaaj31qw0ttwkm.jpg">
-<meta property="og:image" content="https://wx2.sinaimg.cn/large/007jb4T5ly1fxh2rg59zhj30x60wqjw0.jpg">
-<meta property="og:image" content="https://wx3.sinaimg.cn/large/007jb4T5ly1fxh2sc25lcj31wb10ktjs.jpg">
-<meta property="og:updated_time" content="2019-01-04T01:47:32.000Z">
+<meta property="og:updated_time" content="2018-03-11T15:17:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="酸酸乳">
-<meta name="twitter:description" content="1. 首先官网注册账号点我注册账号  2. 充值Vultr 支持支付宝及 PayPal 和信用卡支付。   3. 选择属性 地区    选择操作系统（建议 Centos6）    选择配置    额外选项（根据需要自定义）    等待安装    4. 登录 VPS 获得 IP 及密码，登录远程 VPS    安装脚本（逗比提供）  wget -N --no-check-certificate ht">
-<meta name="twitter:image" content="https://wx2.sinaimg.cn/large/007jb4T5ly1fxh2lftpn5j31f512gq7h.jpg">
+<meta name="twitter:title" content="Web3.js 调用已部署智能合约的 function">
+<meta name="twitter:description" content="简介与环境简介 web3.js 是以太坊提供的一个 JavaScript 库，它封装了以太坊的 JSON RPC API、IPC 调用，提供了一系列与以太坊区块链交互的对象和函数。几乎囊括 JSON RPC 的 API，还可以编译和部署智能合约以及调用智能合约等，其中最重要的就是与智能合约交互的 JS 对象及函数。   开发环境 macOS 操作系统  Node.js  8.9.4  npm 5.">
 
 
 
@@ -158,7 +148,7 @@
 
 
 
-  <link rel="canonical" href="https://tryme.wang/2018/05/vultr-ssr/"/>
+  <link rel="canonical" href="https://tryme.wang/2018/03/ethereum-web3js/"/>
 
 
 
@@ -167,7 +157,7 @@
     sidebar: "",
   };
 </script>
-  <title>酸酸乳 | Star Wang</title>
+  <title>Web3.js 调用已部署智能合约的 function | Star Wang</title>
   
 
 
@@ -358,7 +348,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tryme.wang/2018/05/vultr-ssr/">
+    <link itemprop="mainEntityOfPage" href="https://tryme.wang/2018/03/ethereum-web3js/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Star Wang">
@@ -375,7 +365,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">酸酸乳</h1>
+          <h1 class="post-title" itemprop="name headline">Web3.js 调用已部署智能合约的 function</h1>
         
 
         <div class="post-meta">
@@ -387,7 +377,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-02T22:50:50+08:00">2018-05-02</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T15:07:10+08:00">2018-03-09</time>
             
 
             
@@ -408,7 +398,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-01-04T09:47:32+08:00">2019-01-04</time>
+              <time title="更新于" itemprop="dateModified" datetime="2018-03-11T23:17:54+08:00">2018-03-11</time>
             
           </span>
 
@@ -424,7 +414,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/实用/" itemprop="url" rel="index"><span itemprop="name">实用</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/区块链/" itemprop="url" rel="index"><span itemprop="name">区块链</span></a></span>
 
                 
                 
@@ -439,9 +429,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/05/vultr-ssr/#comments" itemprop="discussionUrl">
+                <a href="/2018/03/ethereum-web3js/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/05/vultr-ssr/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/03/ethereum-web3js/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -449,7 +439,7 @@
 
           
           
-             <span id="/2018/05/vultr-ssr/" class="leancloud_visitors" data-flag-title="酸酸乳">
+             <span id="/2018/03/ethereum-web3js/" class="leancloud_visitors" data-flag-title="Web3.js 调用已部署智能合约的 function">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -474,7 +464,7 @@
                 
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
-                <span title="字数统计">346</span>
+                <span title="字数统计">4.1k</span>
               
 
               
@@ -488,7 +478,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">0:01</span>
+                <span title="阅读时长">0:02</span>
               
             </div>
           
@@ -508,46 +498,28 @@
       
 
       
-        <h4 id="1-首先官网注册账号"><a href="#1-首先官网注册账号" class="headerlink" title="1. 首先官网注册账号"></a>1. 首先官网注册账号</h4><p><a href="https://www.vultr.com/?ref=7405465" target="_blank" rel="noopener">点我注册账号</a></p>
+        <h2 id="简介与环境"><a href="#简介与环境" class="headerlink" title="简介与环境"></a>简介与环境</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><blockquote>
+<p>web3.js 是以太坊提供的一个 JavaScript 库，它封装了以太坊的 JSON RPC API、IPC 调用，提供了一系列与以太坊区块链交互的对象和函数。<br>几乎囊括 JSON RPC 的 API，还可以编译和部署智能合约以及调用智能合约等，其中最重要的就是与智能合约交互的 JS 对象及函数。</p>
+</blockquote>
 <hr>
-<h4 id="2-充值"><a href="#2-充值" class="headerlink" title="2. 充值"></a>2. 充值</h4><p>Vultr 支持支付宝及 PayPal 和信用卡支付。</p>
-<p><img src="https://wx2.sinaimg.cn/large/007jb4T5ly1fxh2lftpn5j31f512gq7h.jpg" align="center" alt="image"></p>
+<h3 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h3><blockquote>
+<p>macOS 操作系统<br>  <strong>Node.js</strong>  8.9.4<br>  npm 5.6.0</p>
+</blockquote>
 <hr>
-<h4 id="3-选择属性"><a href="#3-选择属性" class="headerlink" title="3. 选择属性"></a>3. 选择属性</h4><ul>
-<li>地区</li>
-</ul>
-<p><img src="https://wx2.sinaimg.cn/large/007jb4T5ly1fxh2ma9jp1j31p10xcjxl.jpg" align="center" alt="image"></p>
-<ul>
-<li>选择操作系统（建议 Centos6）</li>
-</ul>
-<p><img src="https://ws1.sinaimg.cn/large/007jb4T5ly1fxh2nd1n86j31oa0lg0w6.jpg" align="center" alt="image"></p>
-<ul>
-<li>选择配置</li>
-</ul>
-<p><img src="https://ws3.sinaimg.cn/large/007jb4T5ly1fxh2o800xyj31pt0vj7ai.jpg" align="center" alt="image"></p>
-<ul>
-<li>额外选项（根据需要自定义）</li>
-</ul>
-<p><img src="https://wx1.sinaimg.cn/large/007jb4T5ly1fxh2oz8lj6j312m0vm0v5.jpg" align="center" alt="image"></p>
-<ul>
-<li>等待安装</li>
-</ul>
-<p><img src="https://wx3.sinaimg.cn/large/007jb4T5ly1fxh2ps7645j31rn0jlgow.jpg" align="center" alt="image"></p>
-<hr>
-<h4 id="4-登录-VPS"><a href="#4-登录-VPS" class="headerlink" title="4. 登录 VPS"></a>4. 登录 VPS</h4><ul>
-<li>获得 IP 及密码，登录远程 VPS</li>
-</ul>
-<p><img src="https://wx3.sinaimg.cn/large/007jb4T5ly1fxh2qlboaaj31qw0ttwkm.jpg" align="center" alt="image"></p>
-<ul>
-<li>安装脚本（逗比提供）</li>
-</ul>
-<p><code>wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh &amp;&amp; chmod +x ssr.sh &amp;&amp; bash ssr.sh</code></p>
-<ul>
-<li>按提示操作</li>
-</ul>
-<p><img src="https://wx2.sinaimg.cn/large/007jb4T5ly1fxh2rg59zhj30x60wqjw0.jpg" align="center" alt="image"></p>
-<p><img src="https://wx3.sinaimg.cn/large/007jb4T5ly1fxh2sc25lcj31wb10ktjs.jpg" align="center" alt="image"></p>
-<p><strong>最后可以使用 SSR 客户端进行连接测试。</strong></p>
+<h2 id="调用智能合约"><a href="#调用智能合约" class="headerlink" title="调用智能合约"></a>调用智能合约</h2><p>首先需要使用 Solidity 编写智能合约，最简单的合约如下，不与区块发生联系：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.2;</span><br><span class="line"> contract hello &#123;</span><br><span class="line"> </span><br><span class="line">     function hello() public &#123;</span><br><span class="line">         </span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">     function say() constant public returns (string) &#123;</span><br><span class="line">         return &quot;Hello World!&quot;;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>注：Solidity 在线编译环境 <a href="https://remix.ethereum.org" target="_blank" rel="noopener">地址</a>  </p>
+<p>编译后会产生很多不同的东西，部分如下：  </p>
+<p> <strong>WEB3DEPLOY</strong>：<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> helloContract = web3.eth.contract([&#123;<span class="string">"constant"</span>:<span class="literal">true</span>,<span class="string">"inputs"</span>:[],<span class="string">"name"</span>:<span class="string">"say"</span>,<span class="string">"outputs"</span>:[&#123;<span class="string">"name"</span>:<span class="string">""</span>,<span class="string">"type"</span>:<span class="string">"string"</span>&#125;],<span class="string">"payable"</span>:<span class="literal">false</span>,<span class="string">"type"</span>:<span class="string">"function"</span>,<span class="string">"stateMutability"</span>:<span class="string">"view"</span>&#125;,&#123;<span class="string">"inputs"</span>:[],<span class="string">"payable"</span>:<span class="literal">false</span>,<span class="string">"type"</span>:<span class="string">"constructor"</span>,<span class="string">"stateMutability"</span>:<span class="string">"nonpayable"</span>&#125;]);</span><br><span class="line"><span class="keyword">var</span> hello = helloContract.new(</span><br><span class="line">   &#123;</span><br><span class="line">     <span class="keyword">from</span>: web3.eth.accounts[<span class="number">0</span>], </span><br><span class="line">     data: <span class="string">'0x6060604052341561000c57fe5b5b5b5b6101598061001e6000396000f30060606040526000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063954ab4b21461003b575bfe5b341561004357fe5b61004b6100d4565b604051808060200182810382528381815181526020019150805190602001908083836000831461009a575b80518252602083111561009a57602082019150602081019050602083039250610076565b505050905090810190601f1680156100c65780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6100dc610119565b604060405190810160405280600c81526020017f48656c6c6f20576f726c6421000000000000000000000000000000000000000081525090505b90565b6020604051908101604052806000815250905600a165627a7a72305820b88ade0e1b40d9f8ffeba3f2bc9aa2ee4a1ae17f03fc52fc568812eb5d96f5ad0029'</span>, </span><br><span class="line">     gas: <span class="string">'4700000'</span></span><br><span class="line">   &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">e, contract</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e, contract);</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> contract.address !== <span class="string">'undefined'</span>) &#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">'Contract mined! address: '</span> + contract.address + <span class="string">' transactionHash: '</span> + contract.transactionHash);</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure></p>
+<p><strong>ABI</strong>（后面会用到）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line"> &#123;</span><br><span class="line">  &quot;constant&quot;: true,</span><br><span class="line">  &quot;inputs&quot;: [],</span><br><span class="line">  &quot;name&quot;: &quot;say&quot;,</span><br><span class="line">  &quot;outputs&quot;: [</span><br><span class="line">   &#123;</span><br><span class="line">    &quot;name&quot;: &quot;&quot;,</span><br><span class="line">    &quot;type&quot;: &quot;string&quot;</span><br><span class="line">   &#125;</span><br><span class="line">  ],</span><br><span class="line">  &quot;payable&quot;: false,</span><br><span class="line">  &quot;type&quot;: &quot;function&quot;,</span><br><span class="line">  &quot;stateMutability&quot;: &quot;view&quot;</span><br><span class="line"> &#125;,</span><br><span class="line"> &#123;</span><br><span class="line">  &quot;inputs&quot;: [],</span><br><span class="line">  &quot;payable&quot;: false,</span><br><span class="line">  &quot;type&quot;: &quot;constructor&quot;,</span><br><span class="line">  &quot;stateMutability&quot;: &quot;nonpayable&quot;</span><br><span class="line"> &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>创建一个 test.js，内容如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入依赖模块</span></span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">"express"</span>)</span><br><span class="line"><span class="keyword">var</span> Web3 = <span class="built_in">require</span>(<span class="string">"web3"</span>)</span><br><span class="line"><span class="keyword">var</span> net = <span class="built_in">require</span>(<span class="string">"net"</span>)</span><br><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> web3;</span><br><span class="line"><span class="comment">// 创建web3对象并连接到以太坊节点</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> web3 !== <span class="string">'undefined'</span>) &#123;</span><br><span class="line">  web3 = <span class="keyword">new</span> Web3(web3.currentProvider);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// set the provider you want from Web3.providers</span></span><br><span class="line">  web3 = <span class="keyword">new</span> Web3(<span class="keyword">new</span> Web3.providers.HttpProvider(<span class="string">"http://192.168.53.60:8545"</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 合约ABI</span></span><br><span class="line"><span class="keyword">var</span> abi = [&#123;<span class="string">"constant"</span>:<span class="literal">true</span>,<span class="string">"inputs"</span>:[],<span class="string">"name"</span>:<span class="string">"say"</span>,<span class="string">"outputs"</span>:[&#123;<span class="string">"name"</span>:<span class="string">""</span>,<span class="string">"type"</span>:<span class="string">"string"</span>&#125;],<span class="string">"payable"</span>:<span class="literal">false</span>,<span class="string">"stateMutability"</span>:<span class="string">"view"</span>,<span class="string">"type"</span>:<span class="string">"function"</span>&#125;,&#123;<span class="string">"inputs"</span>:[],<span class="string">"payable"</span>:<span class="literal">false</span>,<span class="string">"stateMutability"</span>:<span class="string">"nonpayable"</span>,<span class="string">"type"</span>:<span class="string">"constructor"</span>&#125;];</span><br><span class="line"><span class="comment">// 合约地址</span></span><br><span class="line"><span class="keyword">var</span> address = <span class="string">"0xf77976c9a552f2934d3694c38fbd057ae803ef45"</span>;</span><br><span class="line"><span class="comment">// 通过ABI和地址获取已部署的合约对象</span></span><br><span class="line"><span class="keyword">var</span> helloContract = <span class="keyword">new</span> web3.eth.Contract(abi,address);</span><br><span class="line"></span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span> (<span class="params">request, response</span>) </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 调用智能合约方法</span></span><br><span class="line">    <span class="keyword">var</span> helloResult = helloContract.methods.say().call().then(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"返回值:"</span> + result);</span><br><span class="line">    <span class="comment">// 发送 HTTP 头部 </span></span><br><span class="line">    <span class="comment">// HTTP 状态值: 200 : OK</span></span><br><span class="line">    <span class="comment">// 内容类型: text/plain</span></span><br><span class="line">    response.writeHead(<span class="number">200</span>, &#123;<span class="string">'Content-Type'</span>: <span class="string">'text/plain'</span>&#125;);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 发送响应数据</span></span><br><span class="line">    response.end(result);</span><br><span class="line">&#125;);</span><br><span class="line">    </span><br><span class="line">&#125;).listen(<span class="number">8888</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 终端打印如下信息</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Server running at http://127.0.0.1:8888/'</span>);</span><br></pre></td></tr></table></figure>
+<p>启动之前应该先加载 test.js 所依赖的模块：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install express  </span><br><span class="line">$ npm install web3  </span><br><span class="line">$ npm install http</span><br></pre></td></tr></table></figure>
+<p>运行</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ node test.js</span><br></pre></td></tr></table></figure>
+<p>终端打印出”Server running at <a href="http://127.0.0.1:8888&quot;时即可访问&quot;http://127.0.0.1:8888&quot;，网页会返回&quot;Hello" target="_blank" rel="noopener">http://127.0.0.1:8888&quot;时即可访问&quot;http://127.0.0.1:8888&quot;，网页会返回&quot;Hello</a> World”！</p>
 
       
     </div>
@@ -608,7 +580,7 @@
     <strong>本文作者： </strong>Star Wang</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://tryme.wang/2018/05/vultr-ssr/" title="酸酸乳">https://tryme.wang/2018/05/vultr-ssr/</a>
+    <a href="https://tryme.wang/2018/03/ethereum-web3js/" title="Web3.js 调用已部署智能合约的 function">https://tryme.wang/2018/03/ethereum-web3js/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -621,7 +593,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Vultr/" rel="tag"><i class="fa fa-tag"></i> Vultr</a>
+            <a href="/tags/以太坊/" rel="tag"><i class="fa fa-tag"></i> 以太坊</a>
+          
+            <a href="/tags/Web3-js/" rel="tag"><i class="fa fa-tag"></i> Web3.js</a>
           
         </div>
       
@@ -653,8 +627,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/vps-install-server-speeder/" rel="next" title="安装锐速破解版或 Google BBR 魔改版">
-                <i class="fa fa-chevron-left"></i> 安装锐速破解版或 Google BBR 魔改版
+              <a href="/2018/02/centos-jenkins-install/" rel="next" title="CentOS 安装 Jenkins">
+                <i class="fa fa-chevron-left"></i> CentOS 安装 Jenkins
               </a>
             
           </div>
@@ -663,8 +637,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/file-verify/" rel="prev" title="文件 MD5、SHA1、SHA256 校验">
-                文件 MD5、SHA1、SHA256 校验 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/jdk1.5-1.8features/" rel="prev" title="JDK1.5-JDK1.8 新特性">
+                JDK1.5-JDK1.8 新特性 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -914,7 +888,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-首先官网注册账号"><span class="nav-number">1.</span> <span class="nav-text">1. 首先官网注册账号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-充值"><span class="nav-number">2.</span> <span class="nav-text">2. 充值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-选择属性"><span class="nav-number">3.</span> <span class="nav-text">3. 选择属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-登录-VPS"><span class="nav-number">4.</span> <span class="nav-text">4. 登录 VPS</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介与环境"><span class="nav-number">1.</span> <span class="nav-text">简介与环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开发环境"><span class="nav-number">1.2.</span> <span class="nav-text">开发环境</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调用智能合约"><span class="nav-number">2.</span> <span class="nav-text">调用智能合约</span></a></li></ol></div>
             
 
           </div>
@@ -1095,9 +1069,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'https://tryme.wang/2018/05/vultr-ssr/';
-        this.page.identifier = '2018/05/vultr-ssr/';
-        this.page.title = '酸酸乳';
+        this.page.url = 'https://tryme.wang/2018/03/ethereum-web3js/';
+        this.page.identifier = '2018/03/ethereum-web3js/';
+        this.page.title = 'Web3.js 调用已部署智能合约的 function';
       };
       function loadComments () {
         var d = document, s = d.createElement('script');

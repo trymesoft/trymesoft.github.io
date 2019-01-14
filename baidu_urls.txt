@@ -1,6 +1,6 @@
+https://tryme.wang/2019/01/mysql-upgrade-problems/
 https://tryme.wang/2019/01/idea-hotswap-thymeleaf-cache/
 https://tryme.wang/2019/01/transaction-not-rollback/
-https://tryme.wang/2019/01/ethereum-web3js/
 https://tryme.wang/2019/01/new-version-problems/
 https://tryme.wang/2019/01/spring-boot-war-problems/
 https://tryme.wang/2019/01/spring-boot-use-problems/
