@@ -125,27 +125,23 @@
 
 
   
-  <meta name="keywords" content="Spring Boot,Dubbo," />
+  <meta name="keywords" content="MySQL," />
 
 
-<meta name="description" content="Spring Boot 使用中遇到的问题总结，持续更新…  IDEA 中读取配置文件问题问题如图：解决方案：引入如下依赖12345&amp;lt;dependency&amp;gt;            &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;            &amp;lt;artifactId&amp;gt;spring-boot-configu">
-<meta name="keywords" content="Spring Boot,Dubbo">
+<meta name="description" content="某个项目启动时超慢，启动到一半进程自动停掉，有的时候十分钟才能启动，重复测试后发现是数据库连接的问题。  环境 Spring Framework 整合 Druid 配置 DataSource  1234567891011&amp;lt;bean name=&quot;dataSource&quot; class=&quot;com.alibaba.druid.pool.DruidDataSource&quot;      init-metho">
+<meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Dubbo 发布的服务和 AOP 无法共存的问题">
-<meta property="og:url" content="https://tryme.wang/2019/01/dubbo-service-aop-conflict/index.html">
+<meta property="og:title" content="MySQL 连接的问题">
+<meta property="og:url" content="https://tryme.wang/2019/01/mysql-connect-problem/index.html">
 <meta property="og:site_name" content="Star Wang">
-<meta property="og:description" content="Spring Boot 使用中遇到的问题总结，持续更新…  IDEA 中读取配置文件问题问题如图：解决方案：引入如下依赖12345&amp;lt;dependency&amp;gt;            &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;            &amp;lt;artifactId&amp;gt;spring-boot-configu">
+<meta property="og:description" content="某个项目启动时超慢，启动到一半进程自动停掉，有的时候十分钟才能启动，重复测试后发现是数据库连接的问题。  环境 Spring Framework 整合 Druid 配置 DataSource  1234567891011&amp;lt;bean name=&quot;dataSource&quot; class=&quot;com.alibaba.druid.pool.DruidDataSource&quot;      init-metho">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://wx4.sinaimg.cn/large/007jb4T5ly1fxrefyccolj30vq06smza.jpg">
-<meta property="og:image" content="https://wx3.sinaimg.cn/large/007jb4T5ly1fxrem3cjo3j31dk06idin.jpg">
-<meta property="og:image" content="https://wx1.sinaimg.cn/large/007jb4T5ly1fxtkl2jdatj31xs0iqwmv.jpg">
-<meta property="og:image" content="https://wx2.sinaimg.cn/large/007jb4T5ly1fy68yplwsxj31fu10qgs8.jpg">
-<meta property="og:image" content="https://wx2.sinaimg.cn/large/007jb4T5ly1fy6979u3i3j31fo0x4n2l.jpg">
-<meta property="og:updated_time" content="2019-01-04T01:47:32.000Z">
+<meta property="og:image" content="https://wx1.sinaimg.cn/large/007jb4T5ly1fz8ofw8ni0j318q0mudjy.jpg">
+<meta property="og:updated_time" content="2019-01-16T12:18:35.581Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dubbo 发布的服务和 AOP 无法共存的问题">
-<meta name="twitter:description" content="Spring Boot 使用中遇到的问题总结，持续更新…  IDEA 中读取配置文件问题问题如图：解决方案：引入如下依赖12345&amp;lt;dependency&amp;gt;            &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;            &amp;lt;artifactId&amp;gt;spring-boot-configu">
-<meta name="twitter:image" content="https://wx4.sinaimg.cn/large/007jb4T5ly1fxrefyccolj30vq06smza.jpg">
+<meta name="twitter:title" content="MySQL 连接的问题">
+<meta name="twitter:description" content="某个项目启动时超慢，启动到一半进程自动停掉，有的时候十分钟才能启动，重复测试后发现是数据库连接的问题。  环境 Spring Framework 整合 Druid 配置 DataSource  1234567891011&amp;lt;bean name=&quot;dataSource&quot; class=&quot;com.alibaba.druid.pool.DruidDataSource&quot;      init-metho">
+<meta name="twitter:image" content="https://wx1.sinaimg.cn/large/007jb4T5ly1fz8ofw8ni0j318q0mudjy.jpg">
 
 
 
@@ -154,7 +150,7 @@
 
 
 
-  <link rel="canonical" href="https://tryme.wang/2019/01/dubbo-service-aop-conflict/"/>
+  <link rel="canonical" href="https://tryme.wang/2019/01/mysql-connect-problem/"/>
 
 
 
@@ -163,7 +159,7 @@
     sidebar: "",
   };
 </script>
-  <title>Dubbo 发布的服务和 AOP 无法共存的问题 | Star Wang</title>
+  <title>MySQL 连接的问题 | Star Wang</title>
   
 
 
@@ -354,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tryme.wang/2019/01/dubbo-service-aop-conflict/">
+    <link itemprop="mainEntityOfPage" href="https://tryme.wang/2019/01/mysql-connect-problem/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Star Wang">
@@ -371,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Dubbo 发布的服务和 AOP 无法共存的问题</h1>
+          <h1 class="post-title" itemprop="name headline">MySQL 连接的问题</h1>
         
 
         <div class="post-meta">
@@ -383,7 +379,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-03T23:33:40+08:00">2019-01-03</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-16T20:18:27+08:00">2019-01-16</time>
             
 
             
@@ -404,7 +400,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-01-04T09:47:32+08:00">2019-01-04</time>
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-16T20:18:35+08:00">2019-01-16</time>
             
           </span>
 
@@ -435,9 +431,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/dubbo-service-aop-conflict/#comments" itemprop="discussionUrl">
+                <a href="/2019/01/mysql-connect-problem/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/01/dubbo-service-aop-conflict/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2019/01/mysql-connect-problem/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -445,7 +441,7 @@
 
           
           
-             <span id="/2019/01/dubbo-service-aop-conflict/" class="leancloud_visitors" data-flag-title="Dubbo 发布的服务和 AOP 无法共存的问题">
+             <span id="/2019/01/mysql-connect-problem/" class="leancloud_visitors" data-flag-title="MySQL 连接的问题">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -470,7 +466,7 @@
                 
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
-                <span title="字数统计">3.3k</span>
+                <span title="字数统计">8.6k</span>
               
 
               
@@ -484,7 +480,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">0:02</span>
+                <span title="阅读时长">0:04</span>
               
             </div>
           
@@ -505,37 +501,26 @@
 
       
         <blockquote>
-<p>Spring Boot 使用中遇到的问题总结，持续更新…</p>
+<p>某个项目启动时超慢，启动到一半进程自动停掉，有的时候十分钟才能启动，重复测试后发现是数据库连接的问题。</p>
 </blockquote>
-<h3 id="IDEA-中读取配置文件问题"><a href="#IDEA-中读取配置文件问题" class="headerlink" title="IDEA 中读取配置文件问题"></a>IDEA 中读取配置文件问题</h3><p>问题如图：<br><img src="https://wx4.sinaimg.cn/large/007jb4T5ly1fxrefyccolj30vq06smza.jpg" align="center" alt="image"><br>解决方案：<br>引入如下依赖<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-configuration-processor&lt;/artifactId&gt;</span><br><span class="line">            &lt;optional&gt;true&lt;/optional&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
-<p>此时会出现如下图：<br><img src="https://wx3.sinaimg.cn/large/007jb4T5ly1fxrem3cjo3j31dk06idin.jpg" align="center" alt="image"><br>可以直接忽略。</p>
-<hr>
-<h3 id="Tomcat-容器启动过慢的问题"><a href="#Tomcat-容器启动过慢的问题" class="headerlink" title="Tomcat 容器启动过慢的问题"></a>Tomcat 容器启动过慢的问题</h3><p>启动项目时，明明一个很简单的项目，却启动很慢，Tomcat 日志中有这么一行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WARNING: Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [20,617] milliseconds.</span><br></pre></td></tr></table></figure></p>
-<p>启动成功耗时：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INFO: Server startup in 33239 ms</span><br></pre></td></tr></table></figure></p>
-<p>这个警告的操作耗了大半的启动时间，查阅 Tomcat 的<a href="https://wiki.apache.org/tomcat/HowTo/FasterStartUp" target="_blank" rel="noopener">wiki</a>发现这么一段话：<br><img src="https://wx1.sinaimg.cn/large/007jb4T5ly1fxtkl2jdatj31xs0iqwmv.jpg" align="center" alt="image"><br>解释得很清楚，Tomcat 启动时熵源的生成默认是 JRE 的阻塞式熵源（/ dev / random），替换为非阻塞式熵源（/ dev /./ urandom）即可，但是会降低安全性，因为获得的随机数据较少。<br>修改方式：<br>直接修改 $JAVA_HOME/jre/lib/security/java.security 中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">securerandom.source=file:/dev/./urandom</span><br></pre></td></tr></table></figure></p>
-<p>或者直接执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar app.jar -Djava.security.egd=file:/dev/./urandom</span><br></pre></td></tr></table></figure></p>
-<p>修改完再启动：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INFO: Server startup in 10847 ms</span><br></pre></td></tr></table></figure></p>
-<p>效果还是很显著的😊。</p>
-<hr>
-<h3 id="静态变量的注入"><a href="#静态变量的注入" class="headerlink" title="静态变量的注入"></a>静态变量的注入</h3><p>日常开发中，一般常用的工具会抽取到工具类中，工具类中的方法一般都是静态调用的，方法中可能会注入其他成员变量，由于方法是 static 的，所以成员变量也必须是静态的。此时，使用 @Autowired 已经无法注入，此时就需要新的操作了😏。<br>首先，将需要使用的定义为静态变量：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">private static RestTemplate restTemplate;</span><br></pre></td></tr></table></figure></p>
-<p>然后生成 set 方法并在方法上加 @Autowired（读取属性文件的话使用 @Value）注解（注意不要加 static）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Autowired</span><br><span class="line">    public void setRestTemplate(RestTemplate restTemplate) &#123;</span><br><span class="line">        AuthTokenUtil.restTemplate = restTemplate;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<p>最后，类上加上 @Component注解即可。</p>
-<hr>
-<h3 id="RestTemplate-的-GET-请求的-Headers-设置"><a href="#RestTemplate-的-GET-请求的-Headers-设置" class="headerlink" title="RestTemplate 的 GET 请求的 Headers 设置"></a>RestTemplate 的 GET 请求的 Headers 设置</h3><h4 id="RestTemplate-介绍"><a href="#RestTemplate-介绍" class="headerlink" title="RestTemplate 介绍"></a>RestTemplate 介绍</h4><blockquote>
-<p><strong>Spring’s central class for synchronous client-side HTTP access.</strong> It simplifies communication with HTTP servers, and enforces RESTful principles. It handles HTTP connections, leaving application code to provide URLs (with possible template variables) and extract results.</p>
-<p>Spring 的同步客户端 HTTP 访问的中心类。它简化了与 HTTP 服务器的通信，并实施了 RESTful 原则。它处理 HTTP 连接，使应用程序代码提供 URL（带有可能的模板变量）并提取结果。</p>
-</blockquote>
-<h4 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h4><ul>
-<li>Spring Boot 版本 2.0.3.RELEASE</li>
-<li>spring-web-5.0.7.RELEASE.jar 的 RestTemplate</li>
-<li>RestTemplate 的配置</li>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
+<li><p>Spring Framework 整合 Druid 配置 DataSource</p>
+</li>
+<li><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">class</span>=<span class="string">"com.alibaba.druid.pool.DruidDataSource"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">init-method</span>=<span class="string">"init"</span> <span class="attr">destroy-method</span>=<span class="string">"close"</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"validationQuery"</span> <span class="attr">value</span>=<span class="string">"SELECT 1"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"testOnBorrow"</span> <span class="attr">value</span>=<span class="string">"false"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"testOnReturn"</span> <span class="attr">value</span>=<span class="string">"false"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"testWhileIdle"</span> <span class="attr">value</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"timeBetweenEvictionRunsMillis"</span> <span class="attr">value</span>=<span class="string">"60000"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"minEvictableIdleTimeMillis"</span> <span class="attr">value</span>=<span class="string">"25200000"</span> /&gt;</span></span><br><span class="line">    ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>MySQL 5.7</p>
+</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.http.client.ClientHttpRequestFactory;</span><br><span class="line"><span class="keyword">import</span> org.springframework.http.client.SimpleClientHttpRequestFactory;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.client.RestTemplate;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> tryme.wang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@create</span> 2018-11-30 10:59:48</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> RestTemplate配置 </span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RestTemplateConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RestTemplate <span class="title">restTemplate</span><span class="params">(ClientHttpRequestFactory factory)</span> </span>&#123;</span><br><span class="line">        RestTemplate restTemplate = <span class="keyword">new</span> RestTemplate(factory);</span><br><span class="line">        <span class="keyword">return</span> restTemplate;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ClientHttpRequestFactory <span class="title">simpleClientHttpRequestFactory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 默认情况下，RestTemplate依赖于标准JDK工具来建立HTTP连接。</span></span><br><span class="line"><span class="comment">         * 可以通过InterceptingHttpAccessor.setRequestFactory（org.springframework.http.client.ClientHttpRequestFactory）</span></span><br><span class="line"><span class="comment">         * 属性切换到使用不同的HTTP库，例如Apache HttpComponents，Netty和OkHttp。</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        SimpleClientHttpRequestFactory factory = <span class="keyword">new</span> SimpleClientHttpRequestFactory();</span><br><span class="line">        <span class="comment">// 单位：ms</span></span><br><span class="line">        factory.setReadTimeout(<span class="number">5000</span>);</span><br><span class="line">        <span class="comment">// 单位：ms</span></span><br><span class="line">        factory.setConnectTimeout(<span class="number">15000</span>);</span><br><span class="line">        <span class="keyword">return</span> factory;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h4><p>RestTemplate 使用时可能会有 Headers 中需要传入 token 之类参数的情况，使用 POST 请求时，RestTemplate 的 API 中有明显的方法postForEntity或postForObject：</p>
-<p><img src="https://wx2.sinaimg.cn/large/007jb4T5ly1fy68yplwsxj31fu10qgs8.jpg" align="center" alt="image"></p>
-<p>然而 GET 请求并没有明显可以理解的 API 使用，查阅资料发现了 exchange 方法可以指定 HTTP 请求方式：</p>
-<p><img src="https://wx2.sinaimg.cn/large/007jb4T5ly1fy6979u3i3j31fo0x4n2l.jpg" align="center" alt="image"></p>
-<p>ok，就它了，而且其他请求方式均可以使用这个来执行 Headers。</p>
+<hr>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>异常日志：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line">The last packet successfully received from the server was <span class="number">540</span>,<span class="number">992</span> milliseconds ago.  The last packet sent successfully to the server was <span class="number">540</span>,<span class="number">993</span> milliseconds ago.</span><br><span class="line">	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)</span><br><span class="line">	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:<span class="number">62</span>)</span><br><span class="line">	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:<span class="number">45</span>)</span><br><span class="line">	at java.lang.reflect.Constructor.newInstance(Constructor.java:<span class="number">423</span>)</span><br><span class="line">	at com.mysql.jdbc.Util.handleNewInstance(Util.java:<span class="number">411</span>)</span><br><span class="line">	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:<span class="number">1117</span>)</span><br><span class="line">	at com.mysql.jdbc.MysqlIO.nextRowFast(MysqlIO.java:<span class="number">2144</span>)</span><br><span class="line">	at com.mysql.jdbc.MysqlIO.nextRow(MysqlIO.java:<span class="number">1900</span>)</span><br><span class="line">	at com.mysql.jdbc.MysqlIO.readSingleRowSet(MysqlIO.java:<span class="number">3390</span>)</span><br><span class="line">	at com.mysql.jdbc.MysqlIO.getResultSet(MysqlIO.java:<span class="number">483</span>)</span><br><span class="line">	at com.mysql.jdbc.MysqlIO.readResultsForQueryOrUpdate(MysqlIO.java:<span class="number">3096</span>)</span><br><span class="line">	at com.mysql.jdbc.MysqlIO.readAllResults(MysqlIO.java:<span class="number">2266</span>)</span><br><span class="line">	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:<span class="number">2687</span>)</span><br><span class="line">	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:<span class="number">2719</span>)</span><br><span class="line">	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:<span class="number">2155</span>)</span><br><span class="line">	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:<span class="number">1379</span>)</span><br><span class="line">	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:<span class="number">2931</span>)</span><br><span class="line">	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:<span class="number">440</span>)</span><br><span class="line">	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:<span class="number">2929</span>)</span><br><span class="line">	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:<span class="number">440</span>)</span><br><span class="line">	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:<span class="number">2929</span>)</span><br><span class="line">	at com.alibaba.druid.proxy.jdbc.PreparedStatementProxyImpl.execute(PreparedStatementProxyImpl.java:<span class="number">118</span>)</span><br><span class="line">	at com.alibaba.druid.pool.DruidPooledPreparedStatement.execute(DruidPooledPreparedStatement.java:<span class="number">493</span>)</span><br><span class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</span><br><span class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:<span class="number">62</span>)</span><br><span class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:<span class="number">43</span>)</span><br><span class="line">	at java.lang.reflect.Method.invoke(Method.java:<span class="number">498</span>)</span><br><span class="line">	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:<span class="number">62</span>)</span><br><span class="line">	at com.sun.proxy.$Proxy32.execute(Unknown Source)</span><br><span class="line">	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:<span class="number">59</span>)</span><br><span class="line">	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:<span class="number">73</span>)</span><br><span class="line">	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:<span class="number">60</span>)</span><br><span class="line">	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:<span class="number">267</span>)</span><br><span class="line">	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:<span class="number">137</span>)</span><br><span class="line">	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:<span class="number">96</span>)</span><br><span class="line">	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:<span class="number">77</span>)</span><br><span class="line">	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:<span class="number">108</span>)</span><br><span class="line">	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:<span class="number">102</span>)</span><br><span class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</span><br><span class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:<span class="number">62</span>)</span><br><span class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:<span class="number">43</span>)</span><br><span class="line">	at java.lang.reflect.Method.invoke(Method.java:<span class="number">498</span>)</span><br><span class="line">	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:<span class="number">358</span>)</span><br><span class="line">	... <span class="number">84</span> more</span><br><span class="line">Caused by: java.io.EOFException: Can not read response from server. Expected to read <span class="number">4</span> bytes, read <span class="number">0</span> bytes before connection was unexpectedly lost.</span><br><span class="line">	at com.mysql.jdbc.MysqlIO.readFully(MysqlIO.java:<span class="number">3017</span>)</span><br><span class="line">	at com.mysql.jdbc.MysqlIO.nextRowFast(MysqlIO.java:<span class="number">1985</span>)</span><br><span class="line">	... <span class="number">120</span> more</span><br><span class="line"><span class="number">2019</span>-<span class="number">01</span>-<span class="number">16</span> <span class="number">14</span>:<span class="number">40</span>:<span class="number">03</span>,<span class="number">649</span> ERROR [com.alibaba.druid.pool.DruidDataSource] - create connection error</span><br><span class="line">com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure</span><br><span class="line"></span><br><span class="line">The last packet sent successfully to the server was <span class="number">0</span> milliseconds ago. The driver has not received any packets from the server.</span><br><span class="line">	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)</span><br><span class="line">	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:<span class="number">62</span>)</span><br><span class="line">	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:<span class="number">45</span>)</span><br><span class="line">	at java.lang.reflect.Constructor.newInstance(Constructor.java:<span class="number">423</span>)</span><br><span class="line">	at com.mysql.jdbc.Util.handleNewInstance(Util.java:<span class="number">411</span>)</span><br><span class="line">	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:<span class="number">1117</span>)</span><br><span class="line">	at com.mysql.jdbc.MysqlIO.&lt;init&gt;(MysqlIO.java:<span class="number">350</span>)</span><br><span class="line">	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:<span class="number">2393</span>)</span><br><span class="line">	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:<span class="number">2430</span>)</span><br><span class="line">	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:<span class="number">2215</span>)</span><br><span class="line">	at com.mysql.jdbc.ConnectionImpl.&lt;init&gt;(ConnectionImpl.java:<span class="number">813</span>)</span><br><span class="line">	at com.mysql.jdbc.JDBC4Connection.&lt;init&gt;(JDBC4Connection.java:<span class="number">47</span>)</span><br><span class="line">	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)</span><br><span class="line">	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:<span class="number">62</span>)</span><br><span class="line">	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:<span class="number">45</span>)</span><br><span class="line">	at java.lang.reflect.Constructor.newInstance(Constructor.java:<span class="number">423</span>)</span><br><span class="line">	at com.mysql.jdbc.Util.handleNewInstance(Util.java:<span class="number">411</span>)</span><br><span class="line">	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:<span class="number">399</span>)</span><br><span class="line">	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:<span class="number">334</span>)</span><br><span class="line">	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:<span class="number">148</span>)</span><br><span class="line">	at com.alibaba.druid.filter.FilterAdapter.connection_connect(FilterAdapter.java:<span class="number">786</span>)</span><br><span class="line">	at com.alibaba.druid.filter.FilterEventAdapter.connection_connect(FilterEventAdapter.java:<span class="number">38</span>)</span><br><span class="line">	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:<span class="number">142</span>)</span><br><span class="line">	at com.alibaba.druid.filter.stat.StatFilter.connection_connect(StatFilter.java:<span class="number">211</span>)</span><br><span class="line">	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:<span class="number">142</span>)</span><br><span class="line">	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:<span class="number">1360</span>)</span><br><span class="line">	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:<span class="number">1414</span>)</span><br><span class="line">	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:<span class="number">1649</span>)</span><br><span class="line">Caused by: java.net.ConnectException: <span class="function">Connection <span class="title">refused</span> <span class="params">(Connection refused)</span></span></span><br><span class="line"><span class="function">	at java.net.PlainSocketImpl.<span class="title">socketConnect</span><span class="params">(Native Method)</span></span></span><br><span class="line"><span class="function">	at java.net.AbstractPlainSocketImpl.<span class="title">doConnect</span><span class="params">(AbstractPlainSocketImpl.java:<span class="number">350</span>)</span></span></span><br><span class="line"><span class="function">	at java.net.AbstractPlainSocketImpl.<span class="title">connectToAddress</span><span class="params">(AbstractPlainSocketImpl.java:<span class="number">206</span>)</span></span></span><br><span class="line"><span class="function">	at java.net.AbstractPlainSocketImpl.<span class="title">connect</span><span class="params">(AbstractPlainSocketImpl.java:<span class="number">188</span>)</span></span></span><br><span class="line"><span class="function">	at java.net.SocksSocketImpl.<span class="title">connect</span><span class="params">(SocksSocketImpl.java:<span class="number">392</span>)</span></span></span><br><span class="line"><span class="function">	at java.net.Socket.<span class="title">connect</span><span class="params">(Socket.java:<span class="number">589</span>)</span></span></span><br><span class="line"><span class="function">	at java.net.Socket.<span class="title">connect</span><span class="params">(Socket.java:<span class="number">538</span>)</span></span></span><br><span class="line"><span class="function">	at java.net.Socket.&lt;init&gt;<span class="params">(Socket.java:<span class="number">434</span>)</span></span></span><br><span class="line"><span class="function">	at java.net.Socket.&lt;init&gt;<span class="params">(Socket.java:<span class="number">244</span>)</span></span></span><br><span class="line"><span class="function">	at com.mysql.jdbc.StandardSocketFactory.<span class="title">connect</span><span class="params">(StandardSocketFactory.java:<span class="number">257</span>)</span></span></span><br><span class="line"><span class="function">	at com.mysql.jdbc.MysqlIO.&lt;init&gt;<span class="params">(MysqlIO.java:<span class="number">300</span>)</span></span></span><br><span class="line"><span class="function">	... 21 more</span></span><br><span class="line"><span class="function">2019-01-16 14:40:03,666 ERROR [com.alibaba.druid.pool.DruidDataSource] - create connection error</span></span><br><span class="line"><span class="function">com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure</span></span><br></pre></td></tr></table></figure>
+<p>日志中可以看出是数据库连接的问题</p>
+<hr>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><h4 id="数据库层面"><a href="#数据库层面" class="headerlink" title="数据库层面"></a>数据库层面</h4><p>查阅资料发现是应用打开数据库连接后，操作数据库时，连接超时被 MySQL 关闭了，查看 MySQL <a href="https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_wait_timeout" target="_blank" rel="noopener">官方文档</a>，查看超时配置：</p>
+<p><img src="https://wx1.sinaimg.cn/large/007jb4T5ly1fz8ofw8ni0j318q0mudjy.jpg" alt="image" align="center"></p>
+<p>可以更改 MySQL 配置文件将改属性值扩大，或者直接使用 <code>set</code> 命令而无需重启数据库。</p>
+<h4 id="应用配置层面"><a href="#应用配置层面" class="headerlink" title="应用配置层面"></a>应用配置层面</h4><p>将 <code>DruidDataSource</code> 中的属性 <code>testOnBorrow(申请连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。)</code>、<code>testOnReturn(归还连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。)</code>改为 <code>true</code>，重启应用即可。</p>
+<p>将数据库连接 URL 后加上 <code>autoReconnect=true</code>，当连接断开时自动重连。</p>
 
       
     </div>
@@ -596,7 +581,7 @@
     <strong>本文作者： </strong>Star Wang</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://tryme.wang/2019/01/dubbo-service-aop-conflict/" title="Dubbo 发布的服务和 AOP 无法共存的问题">https://tryme.wang/2019/01/dubbo-service-aop-conflict/</a>
+    <a href="https://tryme.wang/2019/01/mysql-connect-problem/" title="MySQL 连接的问题">https://tryme.wang/2019/01/mysql-connect-problem/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -609,9 +594,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Spring-Boot/" rel="tag"><i class="fa fa-tag"></i> Spring Boot</a>
-          
-            <a href="/tags/Dubbo/" rel="tag"><i class="fa fa-tag"></i> Dubbo</a>
+            <a href="/tags/MySQL/" rel="tag"><i class="fa fa-tag"></i> MySQL</a>
           
         </div>
       
@@ -643,8 +626,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/aria2-oneindex/" rel="next" title="Aria2&AriaNG、OneIndex 配置">
-                <i class="fa fa-chevron-left"></i> Aria2&AriaNG、OneIndex 配置
+              <a href="/2019/01/mysql-upgrade-problems/" rel="next" title="测试环境 MySQL 版本升级导致的一些问题">
+                <i class="fa fa-chevron-left"></i> 测试环境 MySQL 版本升级导致的一些问题
               </a>
             
           </div>
@@ -652,10 +635,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/mysql-column-default-value/" rel="prev" title="MySQL 字段默认值的问题">
-                MySQL 字段默认值的问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -904,7 +883,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#IDEA-中读取配置文件问题"><span class="nav-number">1.</span> <span class="nav-text">IDEA 中读取配置文件问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tomcat-容器启动过慢的问题"><span class="nav-number">2.</span> <span class="nav-text">Tomcat 容器启动过慢的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态变量的注入"><span class="nav-number">3.</span> <span class="nav-text">静态变量的注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RestTemplate-的-GET-请求的-Headers-设置"><span class="nav-number">4.</span> <span class="nav-text">RestTemplate 的 GET 请求的 Headers 设置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RestTemplate-介绍"><span class="nav-number">4.1.</span> <span class="nav-text">RestTemplate 介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#环境配置"><span class="nav-number">4.2.</span> <span class="nav-text">环境配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方案"><span class="nav-number">4.3.</span> <span class="nav-text">方案</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">1.</span> <span class="nav-text">环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题"><span class="nav-number">1.1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决"><span class="nav-number">1.2.</span> <span class="nav-text">解决</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库层面"><span class="nav-number">1.2.1.</span> <span class="nav-text">数据库层面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用配置层面"><span class="nav-number">1.2.2.</span> <span class="nav-text">应用配置层面</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1085,9 +1064,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'https://tryme.wang/2019/01/dubbo-service-aop-conflict/';
-        this.page.identifier = '2019/01/dubbo-service-aop-conflict/';
-        this.page.title = 'Dubbo 发布的服务和 AOP 无法共存的问题';
+        this.page.url = 'https://tryme.wang/2019/01/mysql-connect-problem/';
+        this.page.identifier = '2019/01/mysql-connect-problem/';
+        this.page.title = 'MySQL 连接的问题';
       };
       function loadComments () {
         var d = document, s = d.createElement('script');

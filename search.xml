@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[MySQL 连接的问题]]></title>
+    <url>%2F2019%2F01%2Fmysql-connect-problem%2F</url>
+    <content type="text"><![CDATA[某个项目启动时超慢，启动到一半进程自动停掉，有的时候十分钟才能启动，重复测试后发现是数据库连接的问题。 环境 Spring Framework 整合 Druid 配置 DataSource 1234567891011&lt;bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close"&gt; ... &lt;property name="validationQuery" value="SELECT 1" /&gt; &lt;property name="testOnBorrow" value="false" /&gt; &lt;property name="testOnReturn" value="false" /&gt; &lt;property name="testWhileIdle" value="true" /&gt; &lt;property name="timeBetweenEvictionRunsMillis" value="60000" /&gt; &lt;property name="minEvictableIdleTimeMillis" value="25200000" /&gt; ...&lt;/bean&gt; MySQL 5.7 问题异常日志： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596The last packet successfully received from the server was 540,992 milliseconds ago. The last packet sent successfully to the server was 540,993 milliseconds ago. at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) at java.lang.reflect.Constructor.newInstance(Constructor.java:423) at com.mysql.jdbc.Util.handleNewInstance(Util.java:411) at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1117) at com.mysql.jdbc.MysqlIO.nextRowFast(MysqlIO.java:2144) at com.mysql.jdbc.MysqlIO.nextRow(MysqlIO.java:1900) at com.mysql.jdbc.MysqlIO.readSingleRowSet(MysqlIO.java:3390) at com.mysql.jdbc.MysqlIO.getResultSet(MysqlIO.java:483) at com.mysql.jdbc.MysqlIO.readResultsForQueryOrUpdate(MysqlIO.java:3096) at com.mysql.jdbc.MysqlIO.readAllResults(MysqlIO.java:2266) at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2687) at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2719) at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2155) at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1379) at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:2931) at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:440) at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:2929) at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:440) at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:2929) at com.alibaba.druid.proxy.jdbc.PreparedStatementProxyImpl.execute(PreparedStatementProxyImpl.java:118) at com.alibaba.druid.pool.DruidPooledPreparedStatement.execute(DruidPooledPreparedStatement.java:493) at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) at java.lang.reflect.Method.invoke(Method.java:498) at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:62) at com.sun.proxy.$Proxy32.execute(Unknown Source) at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:59) at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:73) at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:60) at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:267) at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:137) at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:96) at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:77) at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:108) at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:102) at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) at java.lang.reflect.Method.invoke(Method.java:498) at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:358) ... 84 moreCaused by: java.io.EOFException: Can not read response from server. Expected to read 4 bytes, read 0 bytes before connection was unexpectedly lost. at com.mysql.jdbc.MysqlIO.readFully(MysqlIO.java:3017) at com.mysql.jdbc.MysqlIO.nextRowFast(MysqlIO.java:1985) ... 120 more2019-01-16 14:40:03,649 ERROR [com.alibaba.druid.pool.DruidDataSource] - create connection errorcom.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failureThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server. at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) at java.lang.reflect.Constructor.newInstance(Constructor.java:423) at com.mysql.jdbc.Util.handleNewInstance(Util.java:411) at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1117) at com.mysql.jdbc.MysqlIO.&lt;init&gt;(MysqlIO.java:350) at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2393) at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2430) at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2215) at com.mysql.jdbc.ConnectionImpl.&lt;init&gt;(ConnectionImpl.java:813) at com.mysql.jdbc.JDBC4Connection.&lt;init&gt;(JDBC4Connection.java:47) at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) at java.lang.reflect.Constructor.newInstance(Constructor.java:423) at com.mysql.jdbc.Util.handleNewInstance(Util.java:411) at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:399) at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:334) at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:148) at com.alibaba.druid.filter.FilterAdapter.connection_connect(FilterAdapter.java:786) at com.alibaba.druid.filter.FilterEventAdapter.connection_connect(FilterEventAdapter.java:38) at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:142) at com.alibaba.druid.filter.stat.StatFilter.connection_connect(StatFilter.java:211) at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:142) at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1360) at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1414) at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:1649)Caused by: java.net.ConnectException: Connection refused (Connection refused) at java.net.PlainSocketImpl.socketConnect(Native Method) at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350) at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) at java.net.Socket.connect(Socket.java:589) at java.net.Socket.connect(Socket.java:538) at java.net.Socket.&lt;init&gt;(Socket.java:434) at java.net.Socket.&lt;init&gt;(Socket.java:244) at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:257) at com.mysql.jdbc.MysqlIO.&lt;init&gt;(MysqlIO.java:300) ... 21 more2019-01-16 14:40:03,666 ERROR [com.alibaba.druid.pool.DruidDataSource] - create connection errorcom.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure 日志中可以看出是数据库连接的问题 解决数据库层面查阅资料发现是应用打开数据库连接后，操作数据库时，连接超时被 MySQL 关闭了，查看 MySQL 官方文档，查看超时配置： 可以更改 MySQL 配置文件将改属性值扩大，或者直接使用 set 命令而无需重启数据库。 应用配置层面将 DruidDataSource 中的属性 testOnBorrow(申请连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。)、testOnReturn(归还连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。)改为 true，重启应用即可。 将数据库连接 URL 后加上 autoReconnect=true，当连接断开时自动重连。]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[测试环境 MySQL 版本升级导致的一些问题]]></title>
     <url>%2F2019%2F01%2Fmysql-upgrade-problems%2F</url>
     <content type="text"><![CDATA[原因某些项目的创建时间字段需要精确到毫秒级，该字段类型是 timestamp，参考 MySQL 5.7 官方文档，0 在日期相关字段中的含义不同，如下表： Data Type “Zero” Value DATE “0000-00-00” TIME “00:00:00” DATETIME “0000-00-00 00:00:00” TIMESTAMP “0000-00-00 00:00:00” YEAR 0000 由此，可以看到无论是 DATETIME 还是 TIMESTAMP 字段属性，默认都是精确到秒的。 查阅资料发现，可以通过 TIMESTAMP(n) 来指定精确度，实际修改中发现当前数据库版本是 5.5，执行字段类型更改时一直报错，但是在 5.7 版本中可以正常修改字段类型，后将数据库更新到 5.7 版本，emm…，迎来升级的同时，小问题也是不少。 问题及解决mysql.user 表结构的改变5.5 和 5.7 版本的 mysql.user 表结构不同（暂不仔细探讨），导致项目中需要连接 MySQL 数据库的地方全部认证失败 Access denied for test@192.168.53.6，但是，该表中的数据全部正常，内网全部可连接，尝试重置密码： 1set password for 'test@192.168.%.%' = password('test666'); 执行报错： 12ERROR 1805 (HY000): Column count of mysql.user is wrong. Expected 42, found 49. The table is probably corrupted 查询资料发现，是数据库升级导致的，两个版本的表结构不同，只好执行升级命令： 1mysql_upgrade -u root -p 输入 root 密码等待执行完毕之后再更改密码，SQL 语句执行成功，再刷新权限即可： 1flush privileges; GROUP BY 问题日志报错： 1Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'test.user.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by; 可以看到是 sql_mode=only_full_group_by 的问题，查看官方文档，发现默认的 sql_mode 中有 only_full_group_by，该配置导致 GROUP BY 后的列必须在 SELECT 的列中。 执行： 1select @@sql_mode; 查看当前 sql_mode，将 only_full_group_by 删除即可。]]></content>
@@ -124,8 +135,8 @@
         <category>技术</category>
       </categories>
       <tags>
-        <tag>IDEA</tag>
         <tag>Openfire</tag>
+        <tag>IDEA</tag>
       </tags>
   </entry>
   <entry>
@@ -136,8 +147,8 @@
         <category>技术</category>
       </categories>
       <tags>
-        <tag>IDEA</tag>
         <tag>Openfire</tag>
+        <tag>IDEA</tag>
       </tags>
   </entry>
   <entry>
@@ -291,8 +302,8 @@
         <category>工具</category>
       </categories>
       <tags>
-        <tag>Jenkins</tag>
         <tag>CentOS</tag>
+        <tag>Jenkins</tag>
       </tags>
   </entry>
   <entry>
@@ -314,8 +325,8 @@
         <category>工具</category>
       </categories>
       <tags>
-        <tag>CentOS</tag>
         <tag>MySQL</tag>
+        <tag>CentOS</tag>
       </tags>
   </entry>
   <entry>
@@ -326,8 +337,8 @@
         <category>工作记录</category>
       </categories>
       <tags>
-        <tag>Spring</tag>
         <tag>Maven</tag>
+        <tag>Spring</tag>
         <tag>AOP</tag>
       </tags>
   </entry>
