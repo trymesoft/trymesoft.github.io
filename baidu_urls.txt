@@ -1,3 +1,5 @@
+https://tryme.wang/2019/02/consistency-hash-usage/
+https://tryme.wang/2019/02/consistency-hash/
 https://tryme.wang/2019/01/hexo-search-problem/
 https://tryme.wang/2019/01/mysql-connect-problem/
 https://tryme.wang/2019/01/mysql-upgrade-problems/
@@ -12,5 +14,3 @@ https://tryme.wang/2019/01/dubbo-service-aop-conflict/
 https://tryme.wang/2018/11/aria2-oneindex/
 https://tryme.wang/2018/11/openfire-database/
 https://tryme.wang/2018/11/import-openfire-source/
-https://tryme.wang/2018/11/install-ttrss/
-https://tryme.wang/2018/11/typecho-encrypt-show-title/

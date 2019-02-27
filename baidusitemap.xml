@@ -4,6 +4,49 @@
 
     
   <url>
+    <loc>https://tryme.wang/2019/02/consistency-hash-usage/</loc>
+    <lastmod>2019-02-27T09:38:08.502Z</lastmod>
+    <data>
+        <display>
+        <title>项目中的一致性哈希使用</title>
+        <pubTime>2019-02-19T12:53:49.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="https://tryme.wang/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+             
+              <breadCrumb title="工作记录" url="https://tryme.wang/categories/%E6%8A%80%E6%9C%AF/%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://tryme.wang/2019/02/consistency-hash/</loc>
+    <lastmod>2019-02-27T09:36:25.656Z</lastmod>
+    <data>
+        <display>
+        <title>一致性哈希算法</title>
+        <pubTime>2019-02-19T04:53:49.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="https://tryme.wang/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://tryme.wang/2019/01/hexo-search-problem/</loc>
     <lastmod>2019-01-17T07:54:06.956Z</lastmod>
     <data>
@@ -235,21 +278,21 @@
 
     
   <url>
-    <loc>https://tryme.wang/2019/01/dubbo-service-aop-conflict/</loc>
+    <loc>https://tryme.wang/2018/02/centos-jenkins-install/</loc>
     <lastmod>2019-01-04T01:47:32.000Z</lastmod>
     <data>
         <display>
-        <title>Dubbo 发布的服务和 AOP 无法共存的问题</title>
-        <pubTime>2019-01-03T15:33:40.000Z</pubTime>
+        <title>CentOS 安装 Jenkins</title>
+        <pubTime>2018-02-26T03:40:56.000Z</pubTime>
         
-        <tag>Spring Boot</tag>
+        <tag>Jenkins</tag>
          
-        <tag>Dubbo</tag>
+        <tag>CentOS</tag>
          
          
            
              
-              <breadCrumb title="技术" url="https://tryme.wang/categories/%E6%8A%80%E6%9C%AF/"/>
+              <breadCrumb title="工具" url="https://tryme.wang/categories/%E5%B7%A5%E5%85%B7/"/>
           
         </display>
     </data>
@@ -282,28 +325,6 @@
 
     
   <url>
-    <loc>https://tryme.wang/2018/02/centos-jenkins-install/</loc>
-    <lastmod>2019-01-04T01:47:32.000Z</lastmod>
-    <data>
-        <display>
-        <title>CentOS 安装 Jenkins</title>
-        <pubTime>2018-02-26T03:40:56.000Z</pubTime>
-        
-        <tag>Jenkins</tag>
-         
-        <tag>CentOS</tag>
-         
-         
-           
-             
-              <breadCrumb title="工具" url="https://tryme.wang/categories/%E5%B7%A5%E5%85%B7/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://tryme.wang/2017/09/centos-mysql-install/</loc>
     <lastmod>2019-01-04T01:47:32.000Z</lastmod>
     <data>
@@ -319,6 +340,28 @@
            
              
               <breadCrumb title="工具" url="https://tryme.wang/categories/%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://tryme.wang/2019/01/dubbo-service-aop-conflict/</loc>
+    <lastmod>2019-01-04T01:47:32.000Z</lastmod>
+    <data>
+        <display>
+        <title>Dubbo 发布的服务和 AOP 无法共存的问题</title>
+        <pubTime>2019-01-03T15:33:40.000Z</pubTime>
+        
+        <tag>Spring Boot</tag>
+         
+        <tag>Dubbo</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="https://tryme.wang/categories/%E6%8A%80%E6%9C%AF/"/>
           
         </display>
     </data>
@@ -432,26 +475,6 @@
 
     
   <url>
-    <loc>https://tryme.wang/2019/01/spring-boot-use-problems/</loc>
-    <lastmod>2019-01-04T01:47:32.000Z</lastmod>
-    <data>
-        <display>
-        <title>Spring Boot 使用中的小问题总结</title>
-        <pubTime>2019-01-03T15:57:40.000Z</pubTime>
-        
-        <tag>Spring Boot</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术" url="https://tryme.wang/categories/%E6%8A%80%E6%9C%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://tryme.wang/2019/01/spring-boot-war-problems/</loc>
     <lastmod>2019-01-04T01:47:32.000Z</lastmod>
     <data>
@@ -494,11 +517,31 @@
 
     
   <url>
-    <loc>https://tryme.wang/2018/11/typecho-encrypt-show-title/</loc>
+    <loc>https://tryme.wang/2019/01/spring-boot-use-problems/</loc>
     <lastmod>2019-01-04T01:47:32.000Z</lastmod>
     <data>
         <display>
-        <title>Typecho 加密文章显示标题</title>
+        <title>Spring Boot 使用中的小问题总结</title>
+        <pubTime>2019-01-03T15:57:40.000Z</pubTime>
+        
+        <tag>Spring Boot</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="https://tryme.wang/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://tryme.wang/2018/11/typecho-support-emoji/</loc>
+    <lastmod>2019-01-04T01:47:32.000Z</lastmod>
+    <data>
+        <display>
+        <title>Typecho 文章支持 emoji</title>
         <pubTime>2018-11-24T09:31:37.000Z</pubTime>
         
         <tag>Typecho</tag>
@@ -514,11 +557,11 @@
 
     
   <url>
-    <loc>https://tryme.wang/2018/11/typecho-support-emoji/</loc>
+    <loc>https://tryme.wang/2018/11/typecho-encrypt-show-title/</loc>
     <lastmod>2019-01-04T01:47:32.000Z</lastmod>
     <data>
         <display>
-        <title>Typecho 文章支持 emoji</title>
+        <title>Typecho 加密文章显示标题</title>
         <pubTime>2018-11-24T09:31:37.000Z</pubTime>
         
         <tag>Typecho</tag>

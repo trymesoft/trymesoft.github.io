@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tryme.wang/2019/02/consistency-hash-usage/</loc>
+    
+    <lastmod>2019-02-27T09:38:08.502Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tryme.wang/2019/02/consistency-hash/</loc>
+    
+    <lastmod>2019-02-27T09:36:25.656Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://tryme.wang/2019/01/hexo-search-problem/</loc>
     
     <lastmod>2019-01-17T07:54:06.956Z</lastmod>
@@ -79,7 +93,7 @@
   </url>
   
   <url>
-    <loc>https://tryme.wang/2019/01/dubbo-service-aop-conflict/</loc>
+    <loc>https://tryme.wang/2018/02/centos-jenkins-install/</loc>
     
     <lastmod>2019-01-04T01:47:32.000Z</lastmod>
     
@@ -93,14 +107,14 @@
   </url>
   
   <url>
-    <loc>https://tryme.wang/2018/02/centos-jenkins-install/</loc>
+    <loc>https://tryme.wang/2017/09/centos-mysql-install/</loc>
     
     <lastmod>2019-01-04T01:47:32.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://tryme.wang/2017/09/centos-mysql-install/</loc>
+    <loc>https://tryme.wang/2019/01/dubbo-service-aop-conflict/</loc>
     
     <lastmod>2019-01-04T01:47:32.000Z</lastmod>
     
@@ -142,13 +156,6 @@
   </url>
   
   <url>
-    <loc>https://tryme.wang/2019/01/spring-boot-use-problems/</loc>
-    
-    <lastmod>2019-01-04T01:47:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://tryme.wang/2019/01/spring-boot-war-problems/</loc>
     
     <lastmod>2019-01-04T01:47:32.000Z</lastmod>
@@ -163,7 +170,7 @@
   </url>
   
   <url>
-    <loc>https://tryme.wang/2018/11/typecho-encrypt-show-title/</loc>
+    <loc>https://tryme.wang/2019/01/spring-boot-use-problems/</loc>
     
     <lastmod>2019-01-04T01:47:32.000Z</lastmod>
     
@@ -171,6 +178,13 @@
   
   <url>
     <loc>https://tryme.wang/2018/11/typecho-support-emoji/</loc>
+    
+    <lastmod>2019-01-04T01:47:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tryme.wang/2018/11/typecho-encrypt-show-title/</loc>
     
     <lastmod>2019-01-04T01:47:32.000Z</lastmod>
     
