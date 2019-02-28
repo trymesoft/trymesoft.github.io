@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://tryme.wang/"/>
-  <updated>2019-02-27T09:38:08.502Z</updated>
+  <updated>2019-02-28T03:27:17.359Z</updated>
   <id>https://tryme.wang/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Typecho 相关改动</title>
+    <link href="https://tryme.wang/2019/02/typecho-changes/"/>
+    <id>https://tryme.wang/2019/02/typecho-changes/</id>
+    <published>2019-02-27T16:53:49.000Z</published>
+    <updated>2019-02-28T03:27:17.359Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>记录 Typecho 或其主题有关改动。</p></blockquote><h3 id="评论显示-User-Agent"><a href="#评论显示-User-Agent" class="headerlink" title="评论显示 User Agent"></a>评论显示 User Agent</h3><p>使用插件实现，插件<a href="https://github.com/ennnnny/typecho" target="_blank" rel="noopener">地址</a>。</p><ol><li>下载后将其上传到网站根目录下的 <code>usr/plugins</code> 文件夹并解压，内含两个插件。</li><li><p>这时可以登录网站管理后台配置并启用：<img src="https://ws4.sinaimg.cn/large/007jb4T5gy1g0lytvuu4aj30ue0nkwfp.jpg" alt="image" align="center"></p></li><li><p>修改评论页面代码，配置 UA 显示位置，<code>Handsome</code> 主题修改主题根目录下的 <code>component/comments.php</code>，大致位置如下：</p><p><img src="https://wx2.sinaimg.cn/large/007jb4T5ly1g0lyz7p3itj318g0ckq5u.jpg" alt="image" align="center"></p></li><li><p>查看评论效果：</p><p><img src="https://ws2.sinaimg.cn/large/007jb4T5ly1g0lz14o2ksj30qw06q3yt.jpg" alt="image" align="center"></p></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;记录 Typecho 或其主题有关改动。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;评论显示-User-Agent&quot;&gt;&lt;a href=&quot;#评论显示-User-Agent&quot; class=&quot;headerlink&quot; title=&quot;评论显示 Us
+      
+    
+    </summary>
+    
+      <category term="工具" scheme="https://tryme.wang/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="Typecho" scheme="https://tryme.wang/tags/Typecho/"/>
+    
+  </entry>
   
   <entry>
     <title>项目中的一致性哈希使用</title>
@@ -495,32 +523,6 @@
   </entry>
   
   <entry>
-    <title>Typecho 文章支持 emoji</title>
-    <link href="https://tryme.wang/2018/11/typecho-support-emoji/"/>
-    <id>https://tryme.wang/2018/11/typecho-support-emoji/</id>
-    <published>2018-11-24T09:31:37.000Z</published>
-    <updated>2019-01-04T01:47:32.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>在 MySQL 数据库中，我们常用的 utf-8 格式编码最多支持 3 个字节，而 emoji 表情是 4 个字节的符号，所以 emoji 表情的长度就超出了我们常用 utf-8 的字符集范围而无法存储。从 MySQL5.5 开始，可以更改数据库和数据表的编码为 utf8mb4 使其支持存储 emoji，utf8mb4 兼容 utf8，且比 utf8 能表示更多的字符，是 utf8 字符集的超集。<br>修改之前一定要备份数据！修改之前一定要备份数据！修改之前一定要备份数据！</p></blockquote><h4 id="1-更改数据库的排序规则"><a href="#1-更改数据库的排序规则" class="headerlink" title="1. 更改数据库的排序规则"></a>1. 更改数据库的排序规则</h4><p><img src="https://wx3.sinaimg.cn/large/007jb4T5ly1fvfzrk6j8ij31yq10fain.jpg" alt="order-rule"></p><h4 id="2-点击-SQL-按钮，执行以下-SQL-语句-将-Typecho-修改为自己对应的前缀"><a href="#2-点击-SQL-按钮，执行以下-SQL-语句-将-Typecho-修改为自己对应的前缀" class="headerlink" title="2. 点击 SQL 按钮，执行以下 SQL 语句(将 Typecho 修改为自己对应的前缀)"></a>2. 点击 SQL 按钮，执行以下 SQL 语句(将 Typecho 修改为自己对应的前缀)</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> typecho_comments <span class="keyword">convert</span> <span class="keyword">to</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8mb4 <span class="keyword">collate</span> utf8mb4_unicode_ci;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> typecho_contents <span class="keyword">convert</span> <span class="keyword">to</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8mb4 <span class="keyword">collate</span> utf8mb4_unicode_ci;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> typecho_fields <span class="keyword">convert</span> <span class="keyword">to</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8mb4 <span class="keyword">collate</span> utf8mb4_unicode_ci;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> typecho_metas <span class="keyword">convert</span> <span class="keyword">to</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8mb4 <span class="keyword">collate</span> utf8mb4_unicode_ci;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> typecho_options <span class="keyword">convert</span> <span class="keyword">to</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8mb4 <span class="keyword">collate</span> utf8mb4_unicode_ci;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> typecho_relationships <span class="keyword">convert</span> <span class="keyword">to</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8mb4 <span class="keyword">collate</span> utf8mb4_unicode_ci;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> typecho_users <span class="keyword">convert</span> <span class="keyword">to</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8mb4 <span class="keyword">collate</span> utf8mb4_unicode_ci;</span><br></pre></td></tr></table></figure><p>修改完之后：<br><img src="https://ws4.sinaimg.cn/large/007jb4T5ly1fvg105ehbxj31ec0mo11c.jpg" alt="after-modified"></p><h4 id="3-编辑网站根目录的-config-inc-php-文件，文件末尾"><a href="#3-编辑网站根目录的-config-inc-php-文件，文件末尾" class="headerlink" title="3. 编辑网站根目录的 config.inc.php 文件，文件末尾"></a>3. 编辑网站根目录的 config.inc.php 文件，文件末尾</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** 定义数据库参数 */</span></span><br><span class="line">$db = <span class="keyword">new</span> Typecho_Db(<span class="string">'Pdo_Mysql'</span>, <span class="string">'typecho_'</span>);</span><br><span class="line">$db-&gt;addServer(<span class="keyword">array</span> (</span><br><span class="line">  <span class="string">'host'</span> =&gt; <span class="string">'localhost'</span>,</span><br><span class="line">  <span class="string">'user'</span> =&gt; <span class="string">'username'</span>,</span><br><span class="line">  <span class="string">'password'</span> =&gt; <span class="string">'password'</span>,</span><br><span class="line">  <span class="string">'charset'</span> =&gt; <span class="string">'utf8mb4'</span>,<span class="comment">// 将utf-8修改为utf8mb4</span></span><br><span class="line">  <span class="string">'port'</span> =&gt; <span class="string">'3306'</span>,</span><br><span class="line">  <span class="string">'database'</span> =&gt; <span class="string">'database-name'</span>,</span><br><span class="line">), Typecho_Db::READ | Typecho_Db::WRITE);</span><br><span class="line">Typecho_Db::set($db);</span><br></pre></td></tr></table></figure><p>按照以上步骤修改完之后，文章即可支持 emoji 表情。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;在 MySQL 数据库中，我们常用的 utf-8 格式编码最多支持 3 个字节，而 emoji 表情是 4 个字节的符号，所以 emoji 表情的长度就超出了我们常用 utf-8 的字符集范围而无法存储。从 MySQL5.5 开始，可以更改数据库和
-      
-    
-    </summary>
-    
-      <category term="工具" scheme="https://tryme.wang/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="Typecho" scheme="https://tryme.wang/tags/Typecho/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Typecho 加密文章显示标题</title>
     <link href="https://tryme.wang/2018/11/typecho-encrypt-show-title/"/>
     <id>https://tryme.wang/2018/11/typecho-encrypt-show-title/</id>
@@ -549,30 +551,28 @@
   </entry>
   
   <entry>
-    <title>Spring Boot2.X 拦截器配置</title>
-    <link href="https://tryme.wang/2018/07/springboot-interceptor/"/>
-    <id>https://tryme.wang/2018/07/springboot-interceptor/</id>
-    <published>2018-07-09T07:49:41.000Z</published>
-    <updated>2018-07-09T07:49:47.000Z</updated>
+    <title>Typecho 文章支持 emoji</title>
+    <link href="https://tryme.wang/2018/11/typecho-support-emoji/"/>
+    <id>https://tryme.wang/2018/11/typecho-support-emoji/</id>
+    <published>2018-11-24T09:31:37.000Z</published>
+    <updated>2019-01-04T01:47:32.000Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>Spring Boot2.0 之后的拦截器配置和之前不太一样，但是殊途同归，特此总结一下😝</p></blockquote><h3 id="Spring-Boot2-0-之前"><a href="#Spring-Boot2-0-之前" class="headerlink" title="Spring Boot2.0 之前"></a>Spring Boot2.0 之前</h3><p>Spring Boot2.0 之前的拦截器配置如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InterceptorConfigurerAdapter</span> <span class="keyword">extends</span> <span class="title">WebMvcConfigurerAdapter</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function">RestRequestValidatorInterceptor <span class="title">restRequestValidatorInterceptor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RestRequestValidatorInterceptor();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addInterceptors</span><span class="params">(InterceptorRegistry registry)</span> </span>&#123;</span><br><span class="line">        registry.addInterceptor(restRequestValidatorInterceptor()).addPathPatterns(<span class="string">"/**"</span>)</span><br><span class="line">                .excludePathPatterns(<span class="string">"/push/test"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>这是没问题的，但是在 Spring Boot2.0 或更高版本中，WebMvcConfigurerAdapter 类已经 deprecated：<br><img src="https://wx4.sinaimg.cn/large/007jb4T5ly1fxh2tu0galj312s05qwfe.jpg" align="center" alt="image"><br>虽然过期，但是可以看到 WebMvcConfigurerAdapter 实现了 WebMvcConfigurer 接口，所以可以直接自定义类实现 WebMvcConfigurer 接口，其他不变。</p><h3 id="Spring-Boot2-0-之后"><a href="#Spring-Boot2-0-之后" class="headerlink" title="Spring Boot2.0 之后"></a>Spring Boot2.0 之后</h3><p>只需要将之前继承的 WebMvcConfigurerAdapter 类改为实现 WebMvcConfigurer 接口。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InterceptorConfigurerAdapter</span> <span class="keyword">implements</span> <span class="title">WebMvcConfigurer</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function">RestRequestValidatorInterceptor <span class="title">restRequestValidatorInterceptor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RestRequestValidatorInterceptor();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addInterceptors</span><span class="params">(InterceptorRegistry registry)</span> </span>&#123;</span><br><span class="line">        registry.addInterceptor(restRequestValidatorInterceptor()).addPathPatterns(<span class="string">"/**"</span>)</span><br><span class="line">                .excludePathPatterns(<span class="string">"/push/test"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>在 MySQL 数据库中，我们常用的 utf-8 格式编码最多支持 3 个字节，而 emoji 表情是 4 个字节的符号，所以 emoji 表情的长度就超出了我们常用 utf-8 的字符集范围而无法存储。从 MySQL5.5 开始，可以更改数据库和数据表的编码为 utf8mb4 使其支持存储 emoji，utf8mb4 兼容 utf8，且比 utf8 能表示更多的字符，是 utf8 字符集的超集。<br>修改之前一定要备份数据！修改之前一定要备份数据！修改之前一定要备份数据！</p></blockquote><h4 id="1-更改数据库的排序规则"><a href="#1-更改数据库的排序规则" class="headerlink" title="1. 更改数据库的排序规则"></a>1. 更改数据库的排序规则</h4><p><img src="https://wx3.sinaimg.cn/large/007jb4T5ly1fvfzrk6j8ij31yq10fain.jpg" alt="order-rule"></p><h4 id="2-点击-SQL-按钮，执行以下-SQL-语句-将-Typecho-修改为自己对应的前缀"><a href="#2-点击-SQL-按钮，执行以下-SQL-语句-将-Typecho-修改为自己对应的前缀" class="headerlink" title="2. 点击 SQL 按钮，执行以下 SQL 语句(将 Typecho 修改为自己对应的前缀)"></a>2. 点击 SQL 按钮，执行以下 SQL 语句(将 Typecho 修改为自己对应的前缀)</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> typecho_comments <span class="keyword">convert</span> <span class="keyword">to</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8mb4 <span class="keyword">collate</span> utf8mb4_unicode_ci;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> typecho_contents <span class="keyword">convert</span> <span class="keyword">to</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8mb4 <span class="keyword">collate</span> utf8mb4_unicode_ci;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> typecho_fields <span class="keyword">convert</span> <span class="keyword">to</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8mb4 <span class="keyword">collate</span> utf8mb4_unicode_ci;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> typecho_metas <span class="keyword">convert</span> <span class="keyword">to</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8mb4 <span class="keyword">collate</span> utf8mb4_unicode_ci;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> typecho_options <span class="keyword">convert</span> <span class="keyword">to</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8mb4 <span class="keyword">collate</span> utf8mb4_unicode_ci;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> typecho_relationships <span class="keyword">convert</span> <span class="keyword">to</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8mb4 <span class="keyword">collate</span> utf8mb4_unicode_ci;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> typecho_users <span class="keyword">convert</span> <span class="keyword">to</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8mb4 <span class="keyword">collate</span> utf8mb4_unicode_ci;</span><br></pre></td></tr></table></figure><p>修改完之后：<br><img src="https://ws4.sinaimg.cn/large/007jb4T5ly1fvg105ehbxj31ec0mo11c.jpg" alt="after-modified"></p><h4 id="3-编辑网站根目录的-config-inc-php-文件，文件末尾"><a href="#3-编辑网站根目录的-config-inc-php-文件，文件末尾" class="headerlink" title="3. 编辑网站根目录的 config.inc.php 文件，文件末尾"></a>3. 编辑网站根目录的 config.inc.php 文件，文件末尾</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** 定义数据库参数 */</span></span><br><span class="line">$db = <span class="keyword">new</span> Typecho_Db(<span class="string">'Pdo_Mysql'</span>, <span class="string">'typecho_'</span>);</span><br><span class="line">$db-&gt;addServer(<span class="keyword">array</span> (</span><br><span class="line">  <span class="string">'host'</span> =&gt; <span class="string">'localhost'</span>,</span><br><span class="line">  <span class="string">'user'</span> =&gt; <span class="string">'username'</span>,</span><br><span class="line">  <span class="string">'password'</span> =&gt; <span class="string">'password'</span>,</span><br><span class="line">  <span class="string">'charset'</span> =&gt; <span class="string">'utf8mb4'</span>,<span class="comment">// 将utf-8修改为utf8mb4</span></span><br><span class="line">  <span class="string">'port'</span> =&gt; <span class="string">'3306'</span>,</span><br><span class="line">  <span class="string">'database'</span> =&gt; <span class="string">'database-name'</span>,</span><br><span class="line">), Typecho_Db::READ | Typecho_Db::WRITE);</span><br><span class="line">Typecho_Db::set($db);</span><br></pre></td></tr></table></figure><p>按照以上步骤修改完之后，文章即可支持 emoji 表情。</p>]]></content>
     
     <summary type="html">
     
       
       
         &lt;blockquote&gt;
-&lt;p&gt;Spring Boot2.0 之后的拦截器配置和之前不太一样，但是殊途同归，特此总结一下😝&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;Spring-Boot2-0-之前&quot;&gt;&lt;a href=&quot;#Spring-Boot2-0-之前&quot; cla
+&lt;p&gt;在 MySQL 数据库中，我们常用的 utf-8 格式编码最多支持 3 个字节，而 emoji 表情是 4 个字节的符号，所以 emoji 表情的长度就超出了我们常用 utf-8 的字符集范围而无法存储。从 MySQL5.5 开始，可以更改数据库和
       
     
     </summary>
     
-      <category term="技术" scheme="https://tryme.wang/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="工具" scheme="https://tryme.wang/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
-      <category term="Spring Boot" scheme="https://tryme.wang/tags/Spring-Boot/"/>
+      <category term="Typecho" scheme="https://tryme.wang/tags/Typecho/"/>
     
   </entry>
   
