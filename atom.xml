@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://tryme.wang/"/>
-  <updated>2019-02-28T03:27:17.359Z</updated>
+  <updated>2019-02-28T11:56:33.444Z</updated>
   <id>https://tryme.wang/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记一次自建在线网盘</title>
+    <link href="https://tryme.wang/2019/02/diy-cloud-pan/"/>
+    <id>https://tryme.wang/2019/02/diy-cloud-pan/</id>
+    <published>2019-02-28T11:53:49.000Z</published>
+    <updated>2019-02-28T11:56:33.444Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>国内很多网盘已死，就剩一家作恶的还存在，不开会员速度限制的还死死的。试过 <code>Nextcloud</code>，但是会占用服务器的硬盘空间，后来改用 <code>OneIndex</code>，下载后直接上传到 <code>OneDrive</code>，不过还是不方便，而且巨硬的东西有问题都没地诉苦。</p><p>突发奇想，可不可以用家里的电脑当云端存储服务器，emm…，帝都联通光纤，关键是这玩意没个公网 IP，NAT 算上自己的路由器都有 3 层，没公网 IP 可不好搞了，还好 “GayHub” 神人多😏。</p></blockquote><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先，多层 NAT 下弱小、可怜、无助的我的美帝良心想牌电脑，需要借助内网穿透工具，<a href="https://github.com/fatedier/frp" target="_blank" rel="noopener">frp</a> 刚好解决内网穿透的问题，当然，前提还是得有一台具有公网 IP 的机器，看下项目官方描述：</p><blockquote><p>frp is a fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet. As of now, it supports tcp &amp; udp, as well as http and https protocols, where requests can be forwarded to internal services by domain name.</p><p>Now it also try to support p2p connect.</p><p>(frp 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp 协议，为 http 和 https 应用协议提供了额外的能力，且尝试性支持了点对点穿透。)</p></blockquote><p>这项目还有中文文档，很是贴心😊，不过开发人员还是尽量阅读英文文档比较好。</p><p>内网穿透搞定了，下面还得有一个网盘客户端（立个 flag，等我🐮🍺了，我自己写一个 WEB 端的），这种东西开源的很多，先用 <code>File Browser</code> 玩玩，项目<a href="https://github.com/filebrowser/filebrowser" target="_blank" rel="noopener">地址</a>，准备的差不多了，下面开搞！</p><h3 id="配置-File-Browser"><a href="#配置-File-Browser" class="headerlink" title="配置 File Browser"></a>配置 File Browser</h3><p>配置可以参考项目<a href="https://docs.filebrowser.xyz/" target="_blank" rel="noopener">文档</a>，我就配置了个端口号和用户目录（用户目录还可以登录进去配置😌）。</p><p>设置端口号（无所谓=_=）：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filebrowser config set port 8888</span><br></pre></td></tr></table></figure><p>然后，Windows 下直接用命令启动即可（嗯，对，就是进去那个黑乎乎的窗口里）。</p><h3 id="配置-frp-内网穿透"><a href="#配置-frp-内网穿透" class="headerlink" title="配置 frp 内网穿透"></a>配置 frp 内网穿透</h3><p>frp <a href="https://github.com/fatedier/frp/blob/master/README_zh.md" target="_blank" rel="noopener">文档</a>很详细，这里在内网的 Windows 下只需使用 <code>frpc.ini</code> 运行 <code>frpc.exe</code> 即可，上一个简单的配置：</p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="attr">server_addr</span> = xx.xx.xx.xx  // 具有公网 IP 的服务器地址</span><br><span class="line"><span class="attr">server_port</span> = <span class="number">7000</span>         // 公网服务器的端口</span><br><span class="line"></span><br><span class="line"><span class="section">[web]</span></span><br><span class="line"><span class="attr">type</span> = http  // HTTP 协议</span><br><span class="line"><span class="attr">local_port</span> = <span class="number">8888</span>  // 本地服务端口号</span><br><span class="line"><span class="attr">custom_domains</span> = www.yourdomain.com  // 自定义域名</span><br></pre></td></tr></table></figure><p>然后，在具有公网 IP 的机器上配置 <code>frps</code>，<code>frps.ini</code> 配置如下：</p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="attr">bind_port</span> = <span class="number">7000</span>  // 绑定的端口</span><br><span class="line"><span class="attr">vhost_http_port</span> = <span class="number">80</span>  // 公网访问的端口</span><br></pre></td></tr></table></figure><p>最后，记得将域名解析到该 IP 上，由于映射的 <code>80</code> 端口，然后直接访问 <code>http://www.yourdomain.com</code> 即可看到 File Browser 的登录页面，嗯，凑合着玩玩先。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;国内很多网盘已死，就剩一家作恶的还存在，不开会员速度限制的还死死的。试过 &lt;code&gt;Nextcloud&lt;/code&gt;，但是会占用服务器的硬盘空间，后来改用 &lt;code&gt;OneIndex&lt;/code&gt;，下载后直接上传到 &lt;code&gt;OneDrive
+      
+    
+    </summary>
+    
+      <category term="实用" scheme="https://tryme.wang/categories/%E5%AE%9E%E7%94%A8/"/>
+    
+    
+      <category term="工具" scheme="https://tryme.wang/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>Typecho 相关改动</title>
@@ -539,32 +565,6 @@
 &lt;p&gt;Typecho 的文章可以加密，但是加密的文章标题默认显示的是“此内容被密码保护”，什么文章都不知道😶，不过还好可以更改配置。 &lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&quot;解决方案&quot;&gt;&lt;a href=&quot;#解决方案&quot; class=&quot;hea
-      
-    
-    </summary>
-    
-      <category term="工具" scheme="https://tryme.wang/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="Typecho" scheme="https://tryme.wang/tags/Typecho/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Typecho 文章支持 emoji</title>
-    <link href="https://tryme.wang/2018/11/typecho-support-emoji/"/>
-    <id>https://tryme.wang/2018/11/typecho-support-emoji/</id>
-    <published>2018-11-24T09:31:37.000Z</published>
-    <updated>2019-01-04T01:47:32.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>在 MySQL 数据库中，我们常用的 utf-8 格式编码最多支持 3 个字节，而 emoji 表情是 4 个字节的符号，所以 emoji 表情的长度就超出了我们常用 utf-8 的字符集范围而无法存储。从 MySQL5.5 开始，可以更改数据库和数据表的编码为 utf8mb4 使其支持存储 emoji，utf8mb4 兼容 utf8，且比 utf8 能表示更多的字符，是 utf8 字符集的超集。<br>修改之前一定要备份数据！修改之前一定要备份数据！修改之前一定要备份数据！</p></blockquote><h4 id="1-更改数据库的排序规则"><a href="#1-更改数据库的排序规则" class="headerlink" title="1. 更改数据库的排序规则"></a>1. 更改数据库的排序规则</h4><p><img src="https://wx3.sinaimg.cn/large/007jb4T5ly1fvfzrk6j8ij31yq10fain.jpg" alt="order-rule"></p><h4 id="2-点击-SQL-按钮，执行以下-SQL-语句-将-Typecho-修改为自己对应的前缀"><a href="#2-点击-SQL-按钮，执行以下-SQL-语句-将-Typecho-修改为自己对应的前缀" class="headerlink" title="2. 点击 SQL 按钮，执行以下 SQL 语句(将 Typecho 修改为自己对应的前缀)"></a>2. 点击 SQL 按钮，执行以下 SQL 语句(将 Typecho 修改为自己对应的前缀)</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> typecho_comments <span class="keyword">convert</span> <span class="keyword">to</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8mb4 <span class="keyword">collate</span> utf8mb4_unicode_ci;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> typecho_contents <span class="keyword">convert</span> <span class="keyword">to</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8mb4 <span class="keyword">collate</span> utf8mb4_unicode_ci;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> typecho_fields <span class="keyword">convert</span> <span class="keyword">to</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8mb4 <span class="keyword">collate</span> utf8mb4_unicode_ci;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> typecho_metas <span class="keyword">convert</span> <span class="keyword">to</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8mb4 <span class="keyword">collate</span> utf8mb4_unicode_ci;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> typecho_options <span class="keyword">convert</span> <span class="keyword">to</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8mb4 <span class="keyword">collate</span> utf8mb4_unicode_ci;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> typecho_relationships <span class="keyword">convert</span> <span class="keyword">to</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8mb4 <span class="keyword">collate</span> utf8mb4_unicode_ci;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> typecho_users <span class="keyword">convert</span> <span class="keyword">to</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8mb4 <span class="keyword">collate</span> utf8mb4_unicode_ci;</span><br></pre></td></tr></table></figure><p>修改完之后：<br><img src="https://ws4.sinaimg.cn/large/007jb4T5ly1fvg105ehbxj31ec0mo11c.jpg" alt="after-modified"></p><h4 id="3-编辑网站根目录的-config-inc-php-文件，文件末尾"><a href="#3-编辑网站根目录的-config-inc-php-文件，文件末尾" class="headerlink" title="3. 编辑网站根目录的 config.inc.php 文件，文件末尾"></a>3. 编辑网站根目录的 config.inc.php 文件，文件末尾</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** 定义数据库参数 */</span></span><br><span class="line">$db = <span class="keyword">new</span> Typecho_Db(<span class="string">'Pdo_Mysql'</span>, <span class="string">'typecho_'</span>);</span><br><span class="line">$db-&gt;addServer(<span class="keyword">array</span> (</span><br><span class="line">  <span class="string">'host'</span> =&gt; <span class="string">'localhost'</span>,</span><br><span class="line">  <span class="string">'user'</span> =&gt; <span class="string">'username'</span>,</span><br><span class="line">  <span class="string">'password'</span> =&gt; <span class="string">'password'</span>,</span><br><span class="line">  <span class="string">'charset'</span> =&gt; <span class="string">'utf8mb4'</span>,<span class="comment">// 将utf-8修改为utf8mb4</span></span><br><span class="line">  <span class="string">'port'</span> =&gt; <span class="string">'3306'</span>,</span><br><span class="line">  <span class="string">'database'</span> =&gt; <span class="string">'database-name'</span>,</span><br><span class="line">), Typecho_Db::READ | Typecho_Db::WRITE);</span><br><span class="line">Typecho_Db::set($db);</span><br></pre></td></tr></table></figure><p>按照以上步骤修改完之后，文章即可支持 emoji 表情。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;在 MySQL 数据库中，我们常用的 utf-8 格式编码最多支持 3 个字节，而 emoji 表情是 4 个字节的符号，所以 emoji 表情的长度就超出了我们常用 utf-8 的字符集范围而无法存储。从 MySQL5.5 开始，可以更改数据库和
       
     
     </summary>

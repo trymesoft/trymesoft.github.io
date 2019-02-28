@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tryme.wang/2019/02/diy-cloud-pan/</loc>
+    
+    <lastmod>2019-02-28T11:56:33.444Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://tryme.wang/2019/02/typecho-changes/</loc>
     
     <lastmod>2019-02-28T03:27:17.359Z</lastmod>
@@ -100,14 +107,14 @@
   </url>
   
   <url>
-    <loc>https://tryme.wang/2018/02/centos-jenkins-install/</loc>
+    <loc>https://tryme.wang/2018/11/aria2-oneindex/</loc>
     
     <lastmod>2019-01-04T01:47:32.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://tryme.wang/2018/11/aria2-oneindex/</loc>
+    <loc>https://tryme.wang/2018/02/centos-jenkins-install/</loc>
     
     <lastmod>2019-01-04T01:47:32.000Z</lastmod>
     
@@ -121,14 +128,14 @@
   </url>
   
   <url>
-    <loc>https://tryme.wang/2018/05/file-verify/</loc>
+    <loc>https://tryme.wang/2019/01/dubbo-service-aop-conflict/</loc>
     
     <lastmod>2019-01-04T01:47:32.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://tryme.wang/2019/01/dubbo-service-aop-conflict/</loc>
+    <loc>https://tryme.wang/2018/05/file-verify/</loc>
     
     <lastmod>2019-01-04T01:47:32.000Z</lastmod>
     
@@ -156,7 +163,7 @@
   </url>
   
   <url>
-    <loc>https://tryme.wang/2017/08/spring-aop-exception/</loc>
+    <loc>https://tryme.wang/2019/01/spring-boot-use-problems/</loc>
     
     <lastmod>2019-01-04T01:47:32.000Z</lastmod>
     
@@ -198,7 +205,7 @@
   </url>
   
   <url>
-    <loc>https://tryme.wang/2019/01/spring-boot-use-problems/</loc>
+    <loc>https://tryme.wang/2017/08/spring-aop-exception/</loc>
     
     <lastmod>2019-01-04T01:47:32.000Z</lastmod>
     
